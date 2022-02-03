@@ -1,3 +1,5 @@
+# YOLOv5
+
 Our model runs object detection as an ensemble of two models: FasterRCNN and YOLOv5. FasterRCNN is 
 covered in [Chau's tutorial](https://chautrn.github.io/aneurysm-docs/faster-rcnn.html). YOLOv5 will
 be covered here.
@@ -9,7 +11,7 @@ Our version of the repo is located at:
 Our version may be outdated compared to Ultralytics' version, but the ensemble uses
 a customized version of the detection script, so updating might break it.
 
-# Data Format
+## Data Format
 
 The format of a YOLO dataset is quite different from FasterRCNN. You still have
 a folder with images, but instead of a single annotation file, YOLO demands a
@@ -18,7 +20,7 @@ separate .txt file that corresponds to each image.
 Furthermore, YOLO also requires a data.yaml file that will specify the paths
 to your training dataset and validation dataset.
 
-## Converting from COCO JSON to YOLO
+### Converting from COCO JSON to YOLO
 
 The annotations we receive from Ron are in the COCO JSON format required for
 FasterRCNN. We can't directly use these for YOLO, so we need to convert them.
@@ -31,7 +33,7 @@ after converting it). *NOTE: The output path must be an absolute path.*
 The script is located at:
 `/data/aneurysm/hakimi93/CamdenAneurysmProject/scripts/coco2yolo.py`
 
-## Training and Testing
+### Training and Testing
 
 You shouldn't be training on the entire dataset since you'll get biased results
 if you test on data that you already trained on.
@@ -44,7 +46,7 @@ In order to achieve similar results with YOLO, we have to actually move images
 (and their corresponding labels) out of the *train* directory and into a new *test* 
 directory.
 
-# Training
+## Training
 
 First, enter the repository:
 `cd /data/aneurysm/hakimi93/CamdenAneurysmProject/inference_package/yolo`
@@ -62,7 +64,7 @@ Incidentally, our images are all already 512x512.
 
 Further usage can be found [here](https://github.com/ultralytics/yolov5/blob/master/train.py#L453).
 
-# Testing
+## Testing
 
 Testing is done from the same location as training, with the script `detect.py`.
 
