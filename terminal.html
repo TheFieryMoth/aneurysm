@@ -453,7 +453,7 @@ the same place.</p></li>
 <h2>Navigation - The <code class="docutils literal notranslate"><span class="pre">cd</span></code> command<a class="headerlink" href="#navigation-the-cd-command" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">cd</span></code> means <em>change directory</em>, and it allows you to move around in the file system.</p>
 <p>The usage of <code class="docutils literal notranslate"><span class="pre">cd</span></code> is as previously mentioned:
-<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">&lt;PATH&gt;</span></code>, with <PATH> being replaced with the path you want to go to.</p>
+<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">&lt;PATH&gt;</span></code>, with <code class="docutils literal notranslate"><span class="pre">&lt;PATH&gt;</span></code> being replaced with the path you want to go to.</p>
 <p>Examples:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">.</span></code> will do nothing, since it just brings you to where you currently are.</p></li>
@@ -469,7 +469,7 @@ have a folder called <code class="docutils literal notranslate"><span class="pre
 <h2>Listing - The <code class="docutils literal notranslate"><span class="pre">ls</span></code> command<a class="headerlink" href="#listing-the-ls-command" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">ls</span></code> (probably) means <em>list</em>. It lists all the files in the directory.</p>
 <p>The usage of <code class="docutils literal notranslate"><span class="pre">ls</span></code> is as expected:
-<code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">&lt;PATH&gt;</span></code>, with <PATH> being replaced with the path to the directory you want.</p>
+<code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">&lt;PATH&gt;</span></code>, with <code class="docutils literal notranslate"><span class="pre">&lt;PATH&gt;</span></code> being replaced with the path to the directory you want.</p>
 <p><code class="docutils literal notranslate"><span class="pre">ls</span></code> without anything else is interpreted as <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">.</span></code>, i.e. it lists the files in the current directory.</p>
 </div>
 <div class="section" id="file-copying-the-cp-command">
@@ -478,7 +478,7 @@ have a folder called <code class="docutils literal notranslate"><span class="pre
 <p>The usage of <code class="docutils literal notranslate"><span class="pre">cp</span></code> is as follows:
 <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">&lt;SOURCE&gt;</span> <span class="pre">&lt;DESTINATION&gt;</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;SOURCE&gt;</span></code> is the path to the <em>file you want to copy</em>.
-`<DESTINATION> is the path to the <em>location you want to copy the file to</em>.</p>
+<code class="docutils literal notranslate"><span class="pre">&lt;DESTINATION&gt;</span></code> is the path to the <em>location you want to copy the file to</em>.</p>
 <p>If you want to copy a directory, you must add the <code class="docutils literal notranslate"><span class="pre">-r</span></code> flag:
 <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">&lt;SOURCE&gt;</span> <span class="pre">&lt;DESTINATION&gt;</span></code></p>
 </div>
@@ -487,19 +487,19 @@ have a folder called <code class="docutils literal notranslate"><span class="pre
 <p><code class="docutils literal notranslate"><span class="pre">mv</span></code> means <em>move</em>. However, in many cases it is used to rename files or directories.</p>
 <p>The usage of <code class="docutils literal notranslate"><span class="pre">mv</span></code> is as follows:
 <code class="docutils literal notranslate"><span class="pre">mv</span> <span class="pre">&lt;SOURCE&gt;</span> <span class="pre">&lt;DESTINATION&gt;</span></code></p>
-<p>If <DESTINATION> is not an existing path, <SOURCE> will simply have its name changed to
-<DESTINATION>.</p>
-<p>If <DESTINATION> is an existing <strong>file</strong> and <SOURCE> is a <strong>directory</strong>, the command will error out.</p>
-<p>If <DESTINATION> is an existing <strong>file</strong> and <SOURCE> is a <strong>file</strong>, the contents of <DESTINATION> will
-be overwritten by the contents of <SOURCE>.</p>
-<p>If <DESTINATION> is an existing <strong>directory</strong>, <SOURCE> will be moved into <DESTINATION>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">&lt;DESTINATION&gt;</span></code> is not an existing path, <code class="docutils literal notranslate"><span class="pre">&lt;SOURCE&gt;</span></code> will simply have its name changed to
+<code class="docutils literal notranslate"><span class="pre">&lt;DESTINATION&gt;</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">&lt;DESTINATION&gt;</span></code> is an existing <strong>file</strong> and <code class="docutils literal notranslate"><span class="pre">&lt;SOURCE&gt;</span></code> is a <strong>directory</strong>, the command will error out.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">&lt;DESTINATION&gt;</span></code> is an existing <strong>file</strong> and <code class="docutils literal notranslate"><span class="pre">&lt;SOURCE&gt;</span></code> is a <strong>file</strong>, the contents of <code class="docutils literal notranslate"><span class="pre">&lt;DESTINATION&gt;</span></code> will
+be overwritten by the contents of <code class="docutils literal notranslate"><span class="pre">&lt;SOURCE&gt;</span></code>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">&lt;DESTINATION&gt;</span></code> is an existing <strong>directory</strong>, <code class="docutils literal notranslate"><span class="pre">&lt;SOURCE&gt;</span></code> will be moved into <code class="docutils literal notranslate"><span class="pre">&lt;DESTINATION&gt;</span></code>.</p>
 </div>
 <div class="section" id="file-creation-the-touch-and-mkdir-commands">
 <h2>File Creation - The <code class="docutils literal notranslate"><span class="pre">touch</span></code> and <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> commands<a class="headerlink" href="#file-creation-the-touch-and-mkdir-commands" title="Permalink to this headline">¶</a></h2>
 <p>Linux has dedicated commands for creating empty files and directories. The usage is very simple.</p>
-<p><code class="docutils literal notranslate"><span class="pre">touch</span> <span class="pre">&lt;FILENAME&gt;</span></code> will create an empty file called <FILENAME> <em>in the current directory</em>. If you want to
+<p><code class="docutils literal notranslate"><span class="pre">touch</span> <span class="pre">&lt;FILENAME&gt;</span></code> will create an empty file called <code class="docutils literal notranslate"><span class="pre">&lt;FILENAME&gt;</span></code> <em>in the current directory</em>. If you want to
 create a file in a different place than your current directory, you have to adjust the path you give.</p>
-<p>Likewise, <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">&lt;DIRNAME&gt;</span></code> will create an empty directory called <DIRNAME> in the current directory.</p>
+<p>Likewise, <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">&lt;DIRNAME&gt;</span></code> will create an empty directory called <code class="docutils literal notranslate"><span class="pre">&lt;DIRNAME&gt;</span></code> in the current directory.</p>
 </div>
 <div class="section" id="file-editing-the-nano-editor">
 <h2>File Editing - The <code class="docutils literal notranslate"><span class="pre">nano</span></code> editor<a class="headerlink" href="#file-editing-the-nano-editor" title="Permalink to this headline">¶</a></h2>
@@ -508,7 +508,7 @@ if you want to edit a file, you have to do it in the terminal window. Linux prov
 the most appropriate one for a new user is probably nano.</p>
 <p>The usage of nano is very simple:
 <code class="docutils literal notranslate"><span class="pre">nano</span> <span class="pre">&lt;FILENAME&gt;</span></code></p>
-<p>If there is no file called <FILENAME>, <em>nano will automatically create one</em>.</p>
+<p>If there is no file called <code class="docutils literal notranslate"><span class="pre">&lt;FILENAME&gt;</span></code>, <em>nano will automatically create one</em>.</p>
 <p>All the nano commands are found at the bottom of the screen once you enter the editor.</p>
 </div>
 <div class="section" id="package-installation-the-pip3-command">
