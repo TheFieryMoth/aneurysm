@@ -5,3 +5,5 @@ format: jb-book
 root: intro
 chapters:
 - file: terminal
+- file: yolo
+- file: main
