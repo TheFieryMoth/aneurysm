@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>(Couldn’t think of anything for this…) &#8212; Rowan Aneurysm Project</title>
+    <title>Data Format &#8212; Rowan Aneurysm Project</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,7 +51,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Introduction to the Terminal" href="terminal.html" />
+    <link rel="next" title="&lt;no title&gt;" href="main.html" />
+    <link rel="prev" title="Introduction to the Terminal" href="terminal.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -89,20 +90,20 @@
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
- <li class="toctree-l1 current">
-  <a class="reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
    (Couldn’t think of anything for this…)
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="terminal.html">
    Introduction to the Terminal
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="yolo.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Data Format
   </a>
  </li>
@@ -147,7 +148,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/intro.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/yolo.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -167,7 +168,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fyolo.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -188,6 +189,41 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Data Format
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#converting-from-coco-json-to-yolo">
+     Converting from COCO JSON to YOLO
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-and-testing">
+     Training and Testing
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training">
+   Training
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#testing">
+   Testing
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -195,21 +231,111 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>(Couldn’t think of anything for this…)</h1>
+                <h1>Data Format</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Data Format
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#converting-from-coco-json-to-yolo">
+     Converting from COCO JSON to YOLO
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-and-testing">
+     Training and Testing
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training">
+   Training
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#testing">
+   Testing
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="couldn-t-think-of-anything-for-this">
-<h1>(Couldn’t think of anything for this…)<a class="headerlink" href="#couldn-t-think-of-anything-for-this" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
+  <p>Our model runs object detection as an ensemble of two models: FasterRCNN and YOLOv5. FasterRCNN is
+covered in <a class="reference external" href="https://chautrn.github.io/aneurysm-docs/faster-rcnn.html">Chau’s tutorial</a>. YOLOv5 will
+be covered here.</p>
+<p>YOLOv5 is actually an independent Git repo, hosted on the <a class="reference external" href="https://github.com/ultralytics/yolov5">Ultralytics Github</a>.
+Our version of the repo is located at:
+<code class="docutils literal notranslate"><span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProject/inference_package/yolo</span></code></p>
+<p>Our version may be outdated compared to Ultralytics’ version, but the ensemble uses
+a customized version of the detection script, so updating might break it.</p>
+<div class="tex2jax_ignore mathjax_ignore section" id="data-format">
+<h1>Data Format<a class="headerlink" href="#data-format" title="Permalink to this headline">¶</a></h1>
+<p>The format of a YOLO dataset is quite different from FasterRCNN. You still have
+a folder with images, but instead of a single annotation file, YOLO demands a
+separate .txt file that corresponds to each image.</p>
+<p>Furthermore, YOLO also requires a data.yaml file that will specify the paths
+to your training dataset and validation dataset.</p>
+<div class="section" id="converting-from-coco-json-to-yolo">
+<h2>Converting from COCO JSON to YOLO<a class="headerlink" href="#converting-from-coco-json-to-yolo" title="Permalink to this headline">¶</a></h2>
+<p>The annotations we receive from Ron are in the COCO JSON format required for
+FasterRCNN. We can’t directly use these for YOLO, so we need to convert them.</p>
+<p>I have already written a script for this, using a package called <a class="reference external" href="https://github.com/pylabel-project/pylabel">pylabel</a>.
+The script is straightforward - all you need to change is the annotation path
+(where is the json file located) and the output path (where you want to put your data
+after converting it). <em>NOTE: The output path must be an absolute path.</em></p>
+<p>The script is located at:
+<code class="docutils literal notranslate"><span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProject/scripts/coco2yolo.py</span></code></p>
 </div>
+<div class="section" id="training-and-testing">
+<h2>Training and Testing<a class="headerlink" href="#training-and-testing" title="Permalink to this headline">¶</a></h2>
+<p>You shouldn’t be training on the entire dataset since you’ll get biased results
+if you test on data that you already trained on.</p>
+<p>The ratio of training data to untouched testing data is called the train-test split.
+Our FasterRCNN uses a train-test split of 80-20, meaning that 80% of the data is
+used for training and we test on the remaining 20%.</p>
+<p>In order to achieve similar results with YOLO, we have to actually move images
+(and their corresponding labels) out of the <em>train</em> directory and into a new <em>test</em>
+directory.</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="training">
+<h1>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h1>
+<p>First, enter the repository:
+<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProject/inference_package/yolo</span></code></p>
+<p>From here, you can execute the training script. Be warned - it has a lot of
+command line arguments.</p>
+<p>The most basic training script call might look something like this:
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">train.py</span> <span class="pre">--data</span> <span class="pre">data.yaml</span> <span class="pre">--weights</span> <span class="pre">''</span> <span class="pre">--cfg</span> <span class="pre">yolov5s.yaml</span> <span class="pre">--img</span> <span class="pre">512</span></code></p>
+<p>This command will train on images defined in <code class="docutils literal notranslate"><span class="pre">data.yaml</span></code> (the path should be adjusted
+so that it actually points to something - there is no data.yaml in the yolo directory)
+for 300 (default) epochs, from scratch, with images automatically resized to 512x512.
+Incidentally, our images are all already 512x512.</p>
+<p>Further usage can be found <a class="reference external" href="https://github.com/ultralytics/yolov5/blob/master/train.py#L453">here</a>.</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="testing">
+<h1>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h1>
+<p>Testing is done from the same location as training, with the script <code class="docutils literal notranslate"><span class="pre">detect.py</span></code>.</p>
+<p>The most basic testing script call might look like this:
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">detect.py</span> <span class="pre">--source</span> <span class="pre">data/images</span> <span class="pre">--weights</span> <span class="pre">yolov5s.pt</span></code></p>
+<p>Again, the paths must be adjusted.</p>
+<p>Further usage can be found <a class="reference external" href="https://github.com/ultralytics/yolov5/blob/master/detect.py#L216">here</a>.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -236,11 +362,18 @@
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="terminal.html" title="next page">
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="terminal.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction to the Terminal</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="main.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction to the Terminal</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
