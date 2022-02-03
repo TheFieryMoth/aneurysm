@@ -49,7 +49,7 @@ the same place.
 `cd` means *change directory*, and it allows you to move around in the file system.
 
 The usage of `cd` is as previously mentioned:
-`cd <PATH>`, with <PATH> being replaced with the path you want to go to.
+`cd <PATH>`, with `<PATH>` being replaced with the path you want to go to.
 
 Examples:
 - `cd .` will do nothing, since it just brings you to where you currently are.
@@ -65,7 +65,7 @@ have a folder called `aneurysm`) since it's a relative path.
 `ls` (probably) means *list*. It lists all the files in the directory.
 
 The usage of `ls` is as expected:
-`ls <PATH>`, with <PATH> being replaced with the path to the directory you want.
+`ls <PATH>`, with `<PATH>` being replaced with the path to the directory you want.
 
 `ls` without anything else is interpreted as `ls .`, i.e. it lists the files in the current directory.
 
@@ -77,7 +77,7 @@ The usage of `cp` is as follows:
 `cp <SOURCE> <DESTINATION>`
 
 `<SOURCE>` is the path to the *file you want to copy*.
-`<DESTINATION> is the path to the *location you want to copy the file to*.
+`<DESTINATION>` is the path to the *location you want to copy the file to*.
 
 If you want to copy a directory, you must add the `-r` flag:
 `cp -r <SOURCE> <DESTINATION>` 
@@ -89,24 +89,24 @@ If you want to copy a directory, you must add the `-r` flag:
 The usage of `mv` is as follows:
 `mv <SOURCE> <DESTINATION>`
 
-If <DESTINATION> is not an existing path, <SOURCE> will simply have its name changed to
-<DESTINATION>.
+If `<DESTINATION>` is not an existing path, `<SOURCE>` will simply have its name changed to
+`<DESTINATION>`.
 
-If <DESTINATION> is an existing **file** and <SOURCE> is a **directory**, the command will error out.
+If `<DESTINATION>` is an existing **file** and `<SOURCE>` is a **directory**, the command will error out.
 
-If <DESTINATION> is an existing **file** and <SOURCE> is a **file**, the contents of <DESTINATION> will
-be overwritten by the contents of <SOURCE>.
+If `<DESTINATION>` is an existing **file** and `<SOURCE>` is a **file**, the contents of `<DESTINATION>` will
+be overwritten by the contents of `<SOURCE>`.
 
-If <DESTINATION> is an existing **directory**, <SOURCE> will be moved into <DESTINATION>.
+If `<DESTINATION>` is an existing **directory**, `<SOURCE>` will be moved into `<DESTINATION>`.
 
 ## File Creation - The `touch` and `mkdir` commands
 
 Linux has dedicated commands for creating empty files and directories. The usage is very simple.
 
-`touch <FILENAME>` will create an empty file called <FILENAME> *in the current directory*. If you want to
+`touch <FILENAME>` will create an empty file called `<FILENAME>` *in the current directory*. If you want to
 create a file in a different place than your current directory, you have to adjust the path you give.
 
-Likewise, `mkdir <DIRNAME>` will create an empty directory called <DIRNAME> in the current directory.
+Likewise, `mkdir <DIRNAME>` will create an empty directory called `<DIRNAME>` in the current directory.
 
 ## File Editing - The `nano` editor
 
@@ -117,7 +117,7 @@ the most appropriate one for a new user is probably nano.
 The usage of nano is very simple:
 `nano <FILENAME>`
 
-If there is no file called <FILENAME>, *nano will automatically create one*. 
+If there is no file called `<FILENAME>`, *nano will automatically create one*. 
 
 All the nano commands are found at the bottom of the screen once you enter the editor.
 
