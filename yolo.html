@@ -221,6 +221,28 @@
    Testing
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#metrics-how-well-did-the-model-do">
+   Metrics: How well did the model do?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#losses">
+     Losses
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-metrics">
+     Other metrics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#detection-results">
+     Detection Results
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -267,6 +289,28 @@
   <a class="reference internal nav-link" href="#testing">
    Testing
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#metrics-how-well-did-the-model-do">
+   Metrics: How well did the model do?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#losses">
+     Losses
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-metrics">
+     Other metrics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#detection-results">
+     Detection Results
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -315,29 +359,102 @@ used for training and we test on the remaining 20%.</p>
 <p>In order to achieve similar results with YOLO, we have to actually move images
 (and their corresponding labels) out of the <em>train</em> directory and into a new <em>test</em>
 directory.</p>
+<p>If you don’t have the repository in your own directory, you should copy it.
+<code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProject/inference_package/yolo_train</span></code></p>
+<p>For this tutorial, we will be training on the merged dataset.
+This dataset is located at <code class="docutils literal notranslate"><span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProject/aortaDatasets/merged/yolo</span></code>.</p>
 </div>
 </div>
 <div class="section" id="training">
 <h2>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h2>
-<p>First, enter the repository:
-<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProject/inference_package/yolo</span></code></p>
+<p>Enter your version of the yolo repo. You might want to copy the dataset.yaml file
+from the dataset to here, just for convenience’s sake. This can be done with this
+command:
+<code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProject/aortaDatasets/merged/yolo/dataset.yaml</span> <span class="pre">.</span></code></p>
 <p>From here, you can execute the training script. Be warned - it has a lot of
 command line arguments.</p>
-<p>The most basic training script call might look something like this:
-<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">train.py</span> <span class="pre">--data</span> <span class="pre">data.yaml</span> <span class="pre">--weights</span> <span class="pre">''</span> <span class="pre">--cfg</span> <span class="pre">yolov5s.yaml</span> <span class="pre">--img</span> <span class="pre">512</span></code></p>
-<p>This command will train on images defined in <code class="docutils literal notranslate"><span class="pre">data.yaml</span></code> (the path should be adjusted
-so that it actually points to something - there is no data.yaml in the yolo directory)
-for 300 (default) epochs, from scratch, with images automatically resized to 512x512.
-Incidentally, our images are all already 512x512.</p>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">train.py</span> <span class="pre">--data</span> <span class="pre">dataset.yaml</span> <span class="pre">--weights</span> <span class="pre">''</span> <span class="pre">--cfg</span> <span class="pre">yolov5s.yaml</span> <span class="pre">--img</span> <span class="pre">512</span> <span class="pre">--epochs</span> <span class="pre">450</span></code></p>
+<p>Let’s break this down.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--data</span> <span class="pre">dataset.yaml</span></code> - Train on images in the directory defined in the dataset.yaml file.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--weights</span> <span class="pre">''</span> <span class="pre">--cfg</span> <span class="pre">yolov5s.yaml</span></code> - Tells the script that you want to train from scratch.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--img</span> <span class="pre">512</span></code> - The image input is 512x512 - we don’t want to change that.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--epochs</span> <span class="pre">450</span></code> - Train for 450 epochs. (The default is 300)</p>
+<p>There are a couple other options you might use.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--project</span></code> is used when you want to save to a specific directory, and
+<code class="docutils literal notranslate"><span class="pre">--name</span></code> is used if you want to give your run a specific name.</p>
 <p>Further usage can be found <a class="reference external" href="https://github.com/ultralytics/yolov5/blob/master/train.py#L453">here</a>.</p>
 </div>
 <div class="section" id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h2>
 <p>Testing is done from the same location as training, with the script <code class="docutils literal notranslate"><span class="pre">detect.py</span></code>.</p>
-<p>The most basic testing script call might look like this:
-<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">detect.py</span> <span class="pre">--source</span> <span class="pre">data/images</span> <span class="pre">--weights</span> <span class="pre">yolov5s.pt</span></code></p>
-<p>Again, the paths must be adjusted.</p>
+<p>If you didn’t change the project or name when you were testing, your command will
+probably look like this:
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">detect.py</span> <span class="pre">--source</span> <span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProject/aortaDatasets/merged/yolo/test/images</span> <span class="pre">--weights</span> <span class="pre">runs/train/exp/weights/best.pt</span> <span class="pre">--save-txt</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">--source</span></code> Points the script at the directory with the images you want to test on.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--weights</span></code> Gives the location of the <code class="docutils literal notranslate"><span class="pre">.pt</span></code> file (weights file) you want to use.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--save-txt</span></code> tells the program to save your labels as txt files.</p>
+<p>Again, there are some extra options that you might want to use.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--project</span></code> and <code class="docutils literal notranslate"><span class="pre">--name</span></code> are the same as before.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--save-crop</span></code> will save the crops of the image. In the main program, these will
+be sent through U-Net.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--line-thickness</span></code> changes how thick the bounding box lines are. The default is 3,
+but I personally like 2.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--hide-labels</span></code> and <code class="docutils literal notranslate"><span class="pre">--hide-conf</span></code> can be used if you just want to see the bounding
+boxes on the image without the extra label and conf score information.</p>
 <p>Further usage can be found <a class="reference external" href="https://github.com/ultralytics/yolov5/blob/master/detect.py#L216">here</a>.</p>
+</div>
+<div class="section" id="metrics-how-well-did-the-model-do">
+<h2>Metrics: How well did the model do?<a class="headerlink" href="#metrics-how-well-did-the-model-do" title="Permalink to this headline">¶</a></h2>
+<p>You probably want to know how well your model did. YOLO automatically saves the
+results of its training process, so you just have to look.</p>
+<p>The results for the training you did just now should be located (from the yolo_train
+folder) in <code class="docutils literal notranslate"><span class="pre">runs/train/exp/results.png</span></code>. Simply transfer that to your local computer
+and open it up in any image-viewing software. You should have something like this:</p>
+<p><img alt="results" src="_images/results.png" /></p>
+<p>Let’s break it down.</p>
+<div class="section" id="losses">
+<h3>Losses<a class="headerlink" href="#losses" title="Permalink to this headline">¶</a></h3>
+<p>For each loss (box, obj, cls) there are a train loss and a val loss. These help
+us to tell when our model is reaching its limits and overfitting. You basically
+want two things from the loss plots:</p>
+<ol class="simple">
+<li><p>Each loss plot should trend towards 0 (or at least a very low number).</p></li>
+<li><p>The shape of the training loss should not be very different from the shape
+of the validation loss. If they’re of different shapes, something’s gone wonky.</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre">box_loss</span></code> - A measure of how good the predicted bounding box is. A lower box
+loss means the bounding box is more accurate.</p>
+<p><code class="docutils literal notranslate"><span class="pre">obj_loss</span></code> - A measure of how likely there is to be an object where the model
+is predicting an object. A high object loss means the model is seeing things that
+aren’t there or not seeing things that are there.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cls_loss</span></code> - A measure of how likely it is that the model predicts a correct class.
+In our case, the model only has to differentiate between ascending and descending aortas.</p>
+</div>
+<div class="section" id="other-metrics">
+<h3>Other metrics<a class="headerlink" href="#other-metrics" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">precision</span></code> is the proportion of correct identifications to total identifications.</p>
+<p><code class="docutils literal notranslate"><span class="pre">recall</span></code> is the proportion of correct identifications to total number of objects.</p>
+<p>If you have 100 real objects and predict 10, with all 10 being correct, your precision
+is high (because your identifications were all correct) but your recall is low (since
+you missed many real objects).</p>
+<p><code class="docutils literal notranslate"><span class="pre">mAP</span></code>, or mean average precision, is basically the “accuracy” of the model. A high
+mAP means a very accurate model. The default YOLO results.png gives two plots of
+mAP.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mAP_0.5</span></code> gives the accuracy if you consider boxes overlapping by at least 50% “correct”.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mAP_0.5:95</span></code> is the same, but with the benchmark being 95% instead. This is generally
+what we want to see be as high as possible.</p>
+</div>
+<div class="section" id="detection-results">
+<h3>Detection Results<a class="headerlink" href="#detection-results" title="Permalink to this headline">¶</a></h3>
+<p>Remember how I had you use the <code class="docutils literal notranslate"><span class="pre">--save-txt</span></code> option when testing? Yeah, that’s for
+this. As long as you have the original labels and the predicted labels, you can get the
+IoU scores of the boxes fairly easily. The script is located at:</p>
+<p><code class="docutils literal notranslate"><span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProject/scripts/get_iou_scores.py</span></code></p>
+<p>Simply find the variable named <code class="docutils literal notranslate"><span class="pre">predlist</span></code> (at the very bottom) and change the
+directory that leads to my labels to the directory that leads to your labels.</p>
+<p>Then, run the script and you will get the average IoU scores for ascending, descending,
+and total.</p>
+</div>
 </div>
 </div>
 
