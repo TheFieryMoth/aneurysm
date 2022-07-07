@@ -1,6 +1,6 @@
-How to run main:
+#How to run main:
 
-# Setting paths
+## Setting paths
 
 `main.py` contains several variables at the top, just below the imports.
 These variables contain important path information needed for running
@@ -9,7 +9,7 @@ You should edit these and save your changes before running main.
 
 All paths must be absolute paths (i.e. start with `/`).
 
-## Weights
+### Weights
 
 There are three paths that refer to weight files:
 YOLO_WEIGHTS, FASTER_WEIGHTS, and UNET_WEIGHTS.
@@ -18,7 +18,7 @@ Weight files are located in `/data/aneurysm/models/weights`,
 inside the `yolo`, `faster`, and `unet` folders for their respective
 models.
 
-## Save directories
+### Save directories
 
 There are five paths that relate to directory locations:
 SAVE_DIR, CROP_DIR, MASK_DIR, FULLMASK_DIR, and MODEL3D_DIR.
@@ -42,7 +42,7 @@ FULLMASK_DIR - the location you want to save *masks of the entire image*.
 
 MODEL3D_DIR - the location you want to save *the 3D models*.
 
-## Source files
+### Source files
 
 The final path is called SOURCE.
 
@@ -51,9 +51,9 @@ It should not have *any* files besides the jpg/dcm files you want to use,
 and the files should all be directly in the directory, i.e. not in a
 subdirectory.
 
-## Important: none of the path naems should have underscores (_) in them!
+### Important: none of the path names should have underscores (_) in them!
 
-# Other preparations
+## Other preparations
 
 Besides editing the paths, you also need to create a directory in the
 same directory your `main.py` is placed, called temp.
@@ -65,7 +65,7 @@ again.
 
 Once you've done all this, you can just `python main.py`.
 
-# I ran main... now what?
+## I ran main... now what?
 
 The most important thing produced by `main.py` is the 3D Model, which
 should be located in wherever you set MODEL3D_DIR to be. The 3D model
