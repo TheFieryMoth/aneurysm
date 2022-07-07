@@ -111,8 +111,8 @@ Likewise, `mkdir <DIRNAME>` will create an empty directory called `<DIRNAME>` in
 ## File Editing - The `nano` editor
 
 Obviously, you'll need to edit files. In the terminal, there's no Notepad or VSCode for you to open up -
-if you want to edit a file, you have to do it in the terminal window. Linux provides several editors, but
-the most appropriate one for a new user is probably nano.
+if you want to edit a file, you have to do it in the terminal window. Linux provides several built-in editors, 
+such as vim or emacs, but the simplest one for a new user is probably nano.
 
 The usage of nano is very simple:
 `nano <FILENAME>`
@@ -130,6 +130,7 @@ with the `pip3` command:
 
 `pip3 install xyz`
 
-This will download the requested package to your Python environment.
+This will download the requested package onto your Python environment.
 
-**Note: Some sites might tell you to install a package with pip. On Lambda, *you MUST use pip3*!!!**
+**Note: Some sites might tell you to install a package with pip. On Lambda, *you MUST use pip3*!**
+
