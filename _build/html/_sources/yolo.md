@@ -25,7 +25,7 @@ to your training dataset and validation dataset.
 The annotations we receive from Ron are in the COCO JSON format required for
 FasterRCNN. We can't directly use these for YOLO, so we need to convert them.
 
-I have already written a script for this, using a package called [pylabel](https://github.com/pylabel-project/pylabel).
+We already have a script for this, using a package called [pylabel](https://github.com/pylabel-project/pylabel).
 The script is straightforward - all you need to change is the annotation path 
 (where is the json file located) and the output path (where you want to put your data
 after converting it). *NOTE: The output path must be an absolute path.*
@@ -47,17 +47,17 @@ In order to achieve similar results with YOLO, we have to actually move images
 directory.
 
 If you don't have the repository in your own directory, you should copy it.
-`cp -r /data/aneurysm/hakimi93/CamdenAneurysmProject/inference_package/yolo_train`
+`cp -r /data/aneurysm/hakimi93/CamdenAneurysmProject/inference_package/yolo_train .`
 
 For this tutorial, we will be training on the merged dataset.
-This dataset is located at `/data/aneurysm/hakimi93/CamdenAneurysmProject/aortaDatasets/merged/yolo`.
+This dataset is located at `/data/aneurysm/models/datasets/merged/yolo`.
 
 ## Training
 
 Enter your version of the yolo repo. You might want to copy the dataset.yaml file
 from the dataset to here, just for convenience's sake. This can be done with this
 command:
-`cp /data/aneurysm/hakimi93/CamdenAneurysmProject/aortaDatasets/merged/yolo/dataset.yaml .`
+`cp /data/aneurysm/models/datasets/merged/yolo/dataset.yaml .`
 
 From here, you can execute the training script. Be warned - it has a lot of 
 command line arguments.

@@ -2,9 +2,8 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: main
+root: intro
 chapters:
-- file: intro
 - file: terminal
 - file: yolo
 - file: main
