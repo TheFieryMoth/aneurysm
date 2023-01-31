@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="How to run main:" href="main.html" />
+    <link rel="next" title="How to run main" href="main.html" />
     <link rel="prev" title="Introduction to the Terminal" href="terminal.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -126,7 +126,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="main.html">
-   How to run main:
+   How to run main
   </a>
  </li>
 </ul>
@@ -440,7 +440,7 @@ covered in <a class="reference external" href="https://chautrn.github.io/aneurys
 be covered here.</p>
 <p>YOLOv5 is actually an independent Git repo, hosted on the <a class="reference external" href="https://github.com/ultralytics/yolov5">Ultralytics Github</a>.
 Our version of the repo is located at:
-<code class="docutils literal notranslate"><span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProject/inference_package/yolo</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProjectTraining/yolov5</span></code></p>
 <p>Our version may be outdated compared to Ultralytics’ version, but the ensemble uses
 a customized version of the detection script, so updating might break it.</p>
 <section id="data-format">
@@ -448,7 +448,7 @@ a customized version of the detection script, so updating might break it.</p>
 <p>The format of a YOLO dataset is quite different from FasterRCNN. You still have
 a folder with images, but instead of a single annotation file, YOLO demands a
 separate .txt file that corresponds to each image.</p>
-<p>Furthermore, YOLO also requires a data.yaml file that will specify the paths
+<p>Furthermore, YOLO also requires a dataset.yaml file that will specify the paths
 to your training dataset and validation dataset.</p>
 <section id="converting-from-coco-json-to-yolo">
 <h3>Converting from COCO JSON to YOLO<a class="headerlink" href="#converting-from-coco-json-to-yolo" title="Permalink to this headline">#</a></h3>
@@ -459,7 +459,7 @@ The script is straightforward - all you need to change is the annotation path
 (where is the json file located) and the output path (where you want to put your data
 after converting it). <em>NOTE: The output path must be an absolute path.</em></p>
 <p>The script is located at:
-<code class="docutils literal notranslate"><span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProject/scripts/coco2yolo.py</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProjectTraining/yolov5/coco2yolo.py</span></code></p>
 </section>
 <section id="training-and-testing">
 <h3>Training and Testing<a class="headerlink" href="#training-and-testing" title="Permalink to this headline">#</a></h3>
@@ -472,19 +472,18 @@ used for training and we test on the remaining 20%.</p>
 (and their corresponding labels) out of the <em>train</em> directory and into a new <em>test</em>
 directory.</p>
 <p>If you don’t have the repository in your own directory, you should copy it.
-<code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProject/inference_package/yolo_train</span> <span class="pre">.</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProjectTraining/yolov5</span> <span class="pre">.</span></code></p>
 <p>For this tutorial, we will be training on the merged dataset.
 This dataset is located at <code class="docutils literal notranslate"><span class="pre">/data/aneurysm/models/datasets/merged/yolo</span></code>.</p>
 </section>
 </section>
 <section id="training">
 <h2>Training<a class="headerlink" href="#training" title="Permalink to this headline">#</a></h2>
-<p>Enter your version of the yolo repo. You might want to copy the dataset.yaml file
+<p><code class="docutils literal notranslate"><span class="pre">cd</span></code> into your version of the yolo repo. You might want to copy the dataset.yaml file
 from the dataset to here, just for convenience’s sake. This can be done with this
 command:
 <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">/data/aneurysm/models/datasets/merged/yolo/dataset.yaml</span> <span class="pre">.</span></code></p>
-<p>From here, you can execute the training script. Be warned - it has a lot of
-command line arguments.</p>
+<p>From here, you can execute the training script. Be warned - it has a few command line arguments.</p>
 <p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">train.py</span> <span class="pre">--data</span> <span class="pre">dataset.yaml</span> <span class="pre">--weights</span> <span class="pre">''</span> <span class="pre">--cfg</span> <span class="pre">yolov5s.yaml</span> <span class="pre">--img</span> <span class="pre">512</span> <span class="pre">--epochs</span> <span class="pre">450</span></code></p>
 <p>Let’s break this down.</p>
 <p><code class="docutils literal notranslate"><span class="pre">--data</span> <span class="pre">dataset.yaml</span></code> - Train on images in the directory defined in the dataset.yaml file.</p>
@@ -501,7 +500,7 @@ command line arguments.</p>
 <p>Testing is done from the same location as training, with the script <code class="docutils literal notranslate"><span class="pre">detect.py</span></code>.</p>
 <p>If you didn’t change the project or name when you were testing, your command will
 probably look like this:
-<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">detect.py</span> <span class="pre">--source</span> <span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProject/aortaDatasets/merged/yolo/test/images</span> <span class="pre">--weights</span> <span class="pre">runs/train/exp/weights/best.pt</span> <span class="pre">--save-txt</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">detect.py</span> <span class="pre">--source</span> <span class="pre">/data/aneurysm/models/datasets/merged/images</span> <span class="pre">--weights</span> <span class="pre">runs/train/exp/weights/best.pt</span> <span class="pre">--save-txt</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">--source</span></code> Points the script at the directory with the images you want to test on.</p>
 <p><code class="docutils literal notranslate"><span class="pre">--weights</span></code> Gives the location of the <code class="docutils literal notranslate"><span class="pre">.pt</span></code> file (weights file) you want to use.</p>
 <p><code class="docutils literal notranslate"><span class="pre">--save-txt</span></code> tells the program to save your labels as txt files.</p>
@@ -561,7 +560,7 @@ what we want to see be as high as possible.</p>
 <p>Remember how I had you use the <code class="docutils literal notranslate"><span class="pre">--save-txt</span></code> option when testing? Yeah, that’s for
 this. As long as you have the original labels and the predicted labels, you can get the
 IoU scores of the boxes fairly easily. The script is located at:</p>
-<p><code class="docutils literal notranslate"><span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProject/scripts/get_iou_scores.py</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProjectInference/scripts/get_iou_scores.py</span></code></p>
 <p>Simply find the variable named <code class="docutils literal notranslate"><span class="pre">predlist</span></code> (at the very bottom) and change the
 directory that leads to my labels to the directory that leads to your labels.</p>
 <p>Then, run the script and you will get the average IoU scores for ascending, descending,
@@ -607,7 +606,7 @@ and total.</p>
     <a class='right-next' id="next-link" href="main.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">How to run main:</p>
+        <p class="prev-next-title">How to run main</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

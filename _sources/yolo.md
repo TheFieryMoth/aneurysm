@@ -6,7 +6,7 @@ be covered here.
 
 YOLOv5 is actually an independent Git repo, hosted on the [Ultralytics Github](https://github.com/ultralytics/yolov5).
 Our version of the repo is located at:
-`/data/aneurysm/hakimi93/CamdenAneurysmProject/inference_package/yolo`
+`/data/aneurysm/hakimi93/CamdenAneurysmProjectTraining/yolov5`
 
 Our version may be outdated compared to Ultralytics' version, but the ensemble uses
 a customized version of the detection script, so updating might break it.
@@ -17,7 +17,7 @@ The format of a YOLO dataset is quite different from FasterRCNN. You still have
 a folder with images, but instead of a single annotation file, YOLO demands a
 separate .txt file that corresponds to each image.
 
-Furthermore, YOLO also requires a data.yaml file that will specify the paths
+Furthermore, YOLO also requires a dataset.yaml file that will specify the paths
 to your training dataset and validation dataset.
 
 ### Converting from COCO JSON to YOLO
@@ -31,7 +31,7 @@ The script is straightforward - all you need to change is the annotation path
 after converting it). *NOTE: The output path must be an absolute path.*
 
 The script is located at:
-`/data/aneurysm/hakimi93/CamdenAneurysmProject/scripts/coco2yolo.py`
+`/data/aneurysm/hakimi93/CamdenAneurysmProjectTraining/yolov5/coco2yolo.py`
 
 ### Training and Testing
 
@@ -47,20 +47,19 @@ In order to achieve similar results with YOLO, we have to actually move images
 directory.
 
 If you don't have the repository in your own directory, you should copy it.
-`cp -r /data/aneurysm/hakimi93/CamdenAneurysmProject/inference_package/yolo_train .`
+`cp -r /data/aneurysm/hakimi93/CamdenAneurysmProjectTraining/yolov5 .`
 
 For this tutorial, we will be training on the merged dataset.
 This dataset is located at `/data/aneurysm/models/datasets/merged/yolo`.
 
 ## Training
 
-Enter your version of the yolo repo. You might want to copy the dataset.yaml file
+`cd` into your version of the yolo repo. You might want to copy the dataset.yaml file
 from the dataset to here, just for convenience's sake. This can be done with this
 command:
 `cp /data/aneurysm/models/datasets/merged/yolo/dataset.yaml .`
 
-From here, you can execute the training script. Be warned - it has a lot of 
-command line arguments.
+From here, you can execute the training script. Be warned - it has a few command line arguments.
 
 `python train.py --data dataset.yaml --weights '' --cfg yolov5s.yaml --img 512 --epochs 450`
 
@@ -87,7 +86,7 @@ Testing is done from the same location as training, with the script `detect.py`.
 
 If you didn't change the project or name when you were testing, your command will 
 probably look like this:
-`python detect.py --source /data/aneurysm/hakimi93/CamdenAneurysmProject/aortaDatasets/merged/yolo/test/images --weights runs/train/exp/weights/best.pt --save-txt`
+`python detect.py --source /data/aneurysm/models/datasets/merged/images --weights runs/train/exp/weights/best.pt --save-txt`
 
 `--source` Points the script at the directory with the images you want to test on.
 
@@ -169,7 +168,7 @@ Remember how I had you use the `--save-txt` option when testing? Yeah, that's fo
 this. As long as you have the original labels and the predicted labels, you can get the
 IoU scores of the boxes fairly easily. The script is located at:
 
-`/data/aneurysm/hakimi93/CamdenAneurysmProject/scripts/get_iou_scores.py`
+`/data/aneurysm/hakimi93/CamdenAneurysmProjectInference/scripts/get_iou_scores.py`
 
 Simply find the variable named `predlist` (at the very bottom) and change the
 directory that leads to my labels to the directory that leads to your labels.

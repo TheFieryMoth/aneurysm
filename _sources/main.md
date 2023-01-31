@@ -1,4 +1,4 @@
-# How to run main:
+# How to run main
 
 ## Setting paths
 
