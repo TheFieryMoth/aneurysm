@@ -170,7 +170,7 @@ IoU scores of the boxes fairly easily. The script is located at:
 
 `/data/aneurysm/hakimi93/CamdenAneurysmProjectInference/scripts/get_iou_scores.py`
 
-Copy it over and find the variable named `preddur` (at the very bottom) and change the
+Copy it over and find the variable named `preddir` (at the very bottom) and change the
 directory that leads to my labels to the directory that leads to your labels.
 
 Then, run the script and you will get the average IoU score. It should be somewhere at or 
