@@ -502,7 +502,10 @@ command:
 probably look like this:
 <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">detect.py</span> <span class="pre">--source</span> <span class="pre">/data/aneurysm/models/datasets/merged/images</span> <span class="pre">--weights</span> <span class="pre">runs/train/exp/weights/best.pt</span> <span class="pre">--save-txt</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">--source</span></code> Points the script at the directory with the images you want to test on.</p>
-<p><code class="docutils literal notranslate"><span class="pre">--weights</span></code> Gives the location of the <code class="docutils literal notranslate"><span class="pre">.pt</span></code> file (weights file) you want to use.</p>
+<p><code class="docutils literal notranslate"><span class="pre">--weights</span></code> Gives the location of the <code class="docutils literal notranslate"><span class="pre">.pt</span></code> file (weights file) you want to use.
+Note that the weights might not be located in runs/train/exp - they could
+be located in runs/train/exp2 if you did another run, or in a different folder if you
+decided to set a different –project or –name when you started training earlier.</p>
 <p><code class="docutils literal notranslate"><span class="pre">--save-txt</span></code> tells the program to save your labels as txt files.</p>
 <p>Again, there are some extra options that you might want to use.</p>
 <p><code class="docutils literal notranslate"><span class="pre">--project</span></code> and <code class="docutils literal notranslate"><span class="pre">--name</span></code> are the same as before.</p>

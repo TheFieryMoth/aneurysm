@@ -90,7 +90,10 @@ probably look like this:
 
 `--source` Points the script at the directory with the images you want to test on.
 
-`--weights` Gives the location of the `.pt` file (weights file) you want to use.
+`--weights` Gives the location of the `.pt` file (weights file) you want to use. 
+                Note that the weights might not be located in runs/train/exp - they could 
+                be located in runs/train/exp2 if you did another run, or in a different folder if you
+                decided to set a different --project or --name when you started training earlier.
 
 `--save-txt` tells the program to save your labels as txt files.
 
