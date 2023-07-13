@@ -13,12 +13,14 @@
 1. Copy the necessary folders for inference and training :
 
 	`$ cp -r /data/aneurysm/hakimi93/TutorialTest .`
+
+2. Enter the folder with `$ cd TutorialTest`
 	
-2. Activate the virtual environment :
+3. Activate the virtual environment :
 
     `$ source 2d-env/bin/activate`
 	
 	This virtual environment contains all the necessary libraries to run our 2D scripts. Once you are done, 
 	you will want to exit the virtual environment with `$ deactivate`.
 
-3. Move on to the next tutorial.	
+4. Move on to the next tutorial.	
