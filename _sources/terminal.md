@@ -1,6 +1,6 @@
 # Introduction to the Terminal
 
-The terminal interface can be challenging at first glance since most of us are familiar with the
+The terminal interface of lambda can be challenging at first glance since most of us are familiar with the
 graphical user interface provided by our operating system. We like to point and click with the mouse,
 so the keyboard-only terminal is difficult to navigate.
 
