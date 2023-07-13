@@ -21,5 +21,4 @@
 	This virtual environment contains all the necessary libraries to run our 2D scripts. Once you are done, 
 	you will want to exit the virtual environment with `$ deactivate`.
 
-3. Move on to either the inference tutorial or the training tutorial.
-	
+3. Move on to the next tutorial.	
