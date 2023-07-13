@@ -1,72 +1,55 @@
-# How to run main:
+# What is inference?
 
-## Setting paths
+Inference is the process of obtaining a prediction from a machine learning model. This is one half of the project, 
+with the other half being training the model.
 
-`main.py` contains several variables at the top, just below the imports.
-These variables contain important path information needed for running
-main.
-You should edit these and save your changes before running main.
+The scripts for inferences are located in the `inference` folder.
 
-All paths must be absolute paths (i.e. start with `/`).
+# Running main.py
 
-### Weights
+The main script for inferencing is called `main.py`. It is run with command-line arguments, meaning you have to
+specify the arguments when you run it. So you would do something like this:
 
-There are three paths that refer to weight files:
-YOLO_WEIGHTS, FASTER_WEIGHTS, and UNET_WEIGHTS.
+`python main.py --cmdlinearg1 x --cmdlinearg2 y`
 
-Weight files are located in `/data/aneurysm/models/weights`,
-inside the `yolo`, `faster`, and `unet` folders for their respective
-models.
+## main.py command-line arguments
 
-### Save directories
+-y (--yolo) :
 
-There are five paths that relate to directory locations:
-SAVE_DIR, CROP_DIR, MASK_DIR, FULLMASK_DIR, and MODEL3D_DIR.
+This argument specifies the path for the object detection weights file. It will be used to calculate the crops of the image slices.
 
-Ideally, you want all of these to be located in the same directory.
+-u (--unet) :
 
-These must all exist *prior* to running main - main won't create them
-for you.
+This argument specifies the path for the image segmentation weights file. It will be used to generate a black-and-white mask of the detected aorta.
 
-They should all be pretty much self-explanatory, but I'll give some
-explanation just in case.
+-d (--dir) :
 
-SAVE_DIR - the location you want to save *images* after detection.
-(Possibly will be removed in the future)
+This argument specifies the path of the output. After running the script, the crops, masks, and final 3d model will be located in the directory specified here. It SHOULD NOT EXIST beforehand.
 
-CROP_DIR - the location you want to save *aorta crops*.
+-s (--source) :
 
-MASK_DIR - the location you want to save *crop masks*.
+This argument specifies the path to the directory that contains the source images. This directory should contain .dcm files.
 
-FULLMASK_DIR - the location you want to save *masks of the entire image*.
+-f (--faster) :
 
-MODEL3D_DIR - the location you want to save *the 3D models*.
+This argument is obsolete, a holdover from when we were using an ensemble. It doesn't need to be specified and can probably be removed without any problems.
 
-### Source files
+### Important note: To prevent accidental corruption of any files, it's a good idea to copy all the files and directories you will use into a separate copies directory beforehand. The paths you specify in these command line arguments SHOULD NOT be direct links to /data/aneurysm/models/datasets or /data/aneurysm/models/weights.
 
-The final path is called SOURCE.
+The final line you run in the terminal might look something like this:
 
-SOURCE must be a directory that contains all the files you want to read.
-It should not have *any* files besides the jpg/dcm files you want to use,
-and the files should all be directly in the directory, i.e. not in a
-subdirectory.
+`python main.py -y /data/aneurysm/yourname/copies/yolo.pt -u /data/aneurysm/yourname/copies/unet.pth -d /data/aneurysm/yourname/run1 -s /data/aneurysm/yourname/copies/TCGA-17-Z011`
 
-### Important: none of the path names should have underscores (_) in them!
+# After running main.py
 
-## Other preparations
+At the end, you will find the following in whatever output directory you specified with `-d` :
 
-Besides editing the paths, you also need to create a directory in the
-same directory your `main.py` is placed, called temp.
+1. A directory named crops, containing cropped images of the detected aortas
 
-This is easy, just `mkdir temp`.
+2. A directory named masks, containing black-and-white masks of the cropped aortas
 
-After you've created temp the first time, you don't need to create it
-again.
+3. A directory named fullmasks, containing the aorta masks pasted back on top of the original image
 
-Once you've done all this, you can just `python main.py`.
+4. A directory named patients, containing a single .html file of the 3d model of the aorta
 
-## I ran main... now what?
-
-The most important thing produced by `main.py` is the 3D Model, which
-should be located in wherever you set MODEL3D_DIR to be. The 3D model
-is an html file that you can open up in your browser and interact with.  
+5. A directory named dcms, containing dicom images that have their pixel data replaced with black-and-white masks
