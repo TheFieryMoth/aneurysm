@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>How to run main &#8212; Rowan Aneurysm Project</title>
+    <title>What is inference? &#8212; Rowan Aneurysm Project</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="YOLOv5" href="yolo.html" />
+    <link rel="prev" title="What is U-Net?" href="unet.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -119,13 +119,23 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="setup.html">
+   Setting up your new workspace
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="yolo.html">
-   YOLOv5
+   What is YOLO?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unet.html">
+   What is U-Net?
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   How to run main
+   What is inference?
   </a>
  </li>
 </ul>
@@ -305,41 +315,33 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setting-paths">
-   Setting paths
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   What is inference?
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#weights">
-     Weights
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-main-py">
+   Running main.py
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#main-py-command-line-arguments">
+     main.py command-line arguments
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#save-directories">
-     Save directories
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#source-files">
-     Source files
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#important-none-of-the-path-names-should-have-underscores-in-them">
-     Important: none of the path names should have underscores (_) in them!
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#important-note-to-prevent-accidental-corruption-of-any-files-it-s-a-good-idea-to-copy-all-the-files-and-directories-you-will-use-into-a-separate-copies-directory-beforehand-the-paths-you-specify-in-these-command-line-arguments-should-not-be-direct-links-to-data-aneurysm-models-datasets-or-data-aneurysm-models-weights">
+       Important note: To prevent accidental corruption of any files, it’s a good idea to copy all the files and directories you will use into a separate copies directory beforehand. The paths you specify in these command line arguments SHOULD NOT be direct links to /data/aneurysm/models/datasets or /data/aneurysm/models/weights.
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#other-preparations">
-   Other preparations
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#i-ran-main-now-what">
-   I ran main… now what?
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#after-running-main-py">
+   After running main.py
   </a>
  </li>
 </ul>
@@ -351,7 +353,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>How to run main</h1>
+                <h1>What is inference?</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -361,41 +363,33 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setting-paths">
-   Setting paths
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   What is inference?
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#weights">
-     Weights
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-main-py">
+   Running main.py
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#main-py-command-line-arguments">
+     main.py command-line arguments
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#save-directories">
-     Save directories
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#source-files">
-     Source files
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#important-none-of-the-path-names-should-have-underscores-in-them">
-     Important: none of the path names should have underscores (_) in them!
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#important-note-to-prevent-accidental-corruption-of-any-files-it-s-a-good-idea-to-copy-all-the-files-and-directories-you-will-use-into-a-separate-copies-directory-beforehand-the-paths-you-specify-in-these-command-line-arguments-should-not-be-direct-links-to-data-aneurysm-models-datasets-or-data-aneurysm-models-weights">
+       Important note: To prevent accidental corruption of any files, it’s a good idea to copy all the files and directories you will use into a separate copies directory beforehand. The paths you specify in these command line arguments SHOULD NOT be direct links to /data/aneurysm/models/datasets or /data/aneurysm/models/weights.
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#other-preparations">
-   Other preparations
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#i-ran-main-now-what">
-   I ran main… now what?
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#after-running-main-py">
+   After running main.py
   </a>
  </li>
 </ul>
@@ -408,66 +402,46 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="how-to-run-main">
-<h1>How to run main<a class="headerlink" href="#how-to-run-main" title="Permalink to this headline">#</a></h1>
-<section id="setting-paths">
-<h2>Setting paths<a class="headerlink" href="#setting-paths" title="Permalink to this headline">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">main.py</span></code> contains several variables at the top, just below the imports.
-These variables contain important path information needed for running
-main.
-You should edit these and save your changes before running main.</p>
-<p>All paths must be absolute paths (i.e. start with <code class="docutils literal notranslate"><span class="pre">/</span></code>).</p>
-<section id="weights">
-<h3>Weights<a class="headerlink" href="#weights" title="Permalink to this headline">#</a></h3>
-<p>There are three paths that refer to weight files:
-YOLO_WEIGHTS, FASTER_WEIGHTS, and UNET_WEIGHTS.</p>
-<p>Weight files are located in <code class="docutils literal notranslate"><span class="pre">/data/aneurysm/models/weights</span></code>,
-inside the <code class="docutils literal notranslate"><span class="pre">yolo</span></code>, <code class="docutils literal notranslate"><span class="pre">faster</span></code>, and <code class="docutils literal notranslate"><span class="pre">unet</span></code> folders for their respective
-models.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="what-is-inference">
+<h1>What is inference?<a class="headerlink" href="#what-is-inference" title="Permalink to this headline">#</a></h1>
+<p>Inference is the process of obtaining a prediction from a machine learning model. This is one half of the project,
+with the other half being training the model.</p>
+<p>The scripts for inferences are located in the <code class="docutils literal notranslate"><span class="pre">inference</span></code> folder.</p>
 </section>
-<section id="save-directories">
-<h3>Save directories<a class="headerlink" href="#save-directories" title="Permalink to this headline">#</a></h3>
-<p>There are five paths that relate to directory locations:
-SAVE_DIR, CROP_DIR, MASK_DIR, FULLMASK_DIR, and MODEL3D_DIR.</p>
-<p>Ideally, you want all of these to be located in the same directory.</p>
-<p>These must all exist <em>prior</em> to running main - main won’t create them
-for you.</p>
-<p>They should all be pretty much self-explanatory, but I’ll give some
-explanation just in case.</p>
-<p>SAVE_DIR - the location you want to save <em>images</em> after detection.
-(Possibly will be removed in the future)</p>
-<p>CROP_DIR - the location you want to save <em>aorta crops</em>.</p>
-<p>MASK_DIR - the location you want to save <em>crop masks</em>.</p>
-<p>FULLMASK_DIR - the location you want to save <em>masks of the entire image</em>.</p>
-<p>MODEL3D_DIR - the location you want to save <em>the 3D models</em>.</p>
-</section>
-<section id="source-files">
-<h3>Source files<a class="headerlink" href="#source-files" title="Permalink to this headline">#</a></h3>
-<p>The final path is called SOURCE.</p>
-<p>SOURCE must be a directory that contains all the files you want to read.
-It should not have <em>any</em> files besides the jpg/dcm files you want to use,
-and the files should all be directly in the directory, i.e. not in a
-subdirectory.</p>
-</section>
-<section id="important-none-of-the-path-names-should-have-underscores-in-them">
-<h3>Important: none of the path names should have underscores (_) in them!<a class="headerlink" href="#important-none-of-the-path-names-should-have-underscores-in-them" title="Permalink to this headline">#</a></h3>
+<section class="tex2jax_ignore mathjax_ignore" id="running-main-py">
+<h1>Running <a class="reference external" href="http://main.py">main.py</a><a class="headerlink" href="#running-main-py" title="Permalink to this headline">#</a></h1>
+<p>The main script for inferencing is called <code class="docutils literal notranslate"><span class="pre">main.py</span></code>. It is run with command-line arguments, meaning you have to
+specify the arguments when you run it. So you would do something like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">main.py</span> <span class="pre">--cmdlinearg1</span> <span class="pre">x</span> <span class="pre">--cmdlinearg2</span> <span class="pre">y</span></code></p>
+<section id="main-py-command-line-arguments">
+<h2><a class="reference external" href="http://main.py">main.py</a> command-line arguments<a class="headerlink" href="#main-py-command-line-arguments" title="Permalink to this headline">#</a></h2>
+<p>-y (–yolo) :</p>
+<p>This argument specifies the path for the object detection weights file. It will be used to calculate the crops of the image slices.</p>
+<p>-u (–unet) :</p>
+<p>This argument specifies the path for the image segmentation weights file. It will be used to generate a black-and-white mask of the detected aorta.</p>
+<p>-d (–dir) :</p>
+<p>This argument specifies the path of the output. After running the script, the crops, masks, and final 3d model will be located in the directory specified here. It SHOULD NOT EXIST beforehand.</p>
+<p>-s (–source) :</p>
+<p>This argument specifies the path to the directory that contains the source images. This directory should contain .dcm files.</p>
+<p>-f (–faster) :</p>
+<p>This argument is obsolete, a holdover from when we were using an ensemble. It doesn’t need to be specified and can probably be removed without any problems.</p>
+<section id="important-note-to-prevent-accidental-corruption-of-any-files-it-s-a-good-idea-to-copy-all-the-files-and-directories-you-will-use-into-a-separate-copies-directory-beforehand-the-paths-you-specify-in-these-command-line-arguments-should-not-be-direct-links-to-data-aneurysm-models-datasets-or-data-aneurysm-models-weights">
+<h3>Important note: To prevent accidental corruption of any files, it’s a good idea to copy all the files and directories you will use into a separate copies directory beforehand. The paths you specify in these command line arguments SHOULD NOT be direct links to /data/aneurysm/models/datasets or /data/aneurysm/models/weights.<a class="headerlink" href="#important-note-to-prevent-accidental-corruption-of-any-files-it-s-a-good-idea-to-copy-all-the-files-and-directories-you-will-use-into-a-separate-copies-directory-beforehand-the-paths-you-specify-in-these-command-line-arguments-should-not-be-direct-links-to-data-aneurysm-models-datasets-or-data-aneurysm-models-weights" title="Permalink to this headline">#</a></h3>
+<p>The final line you run in the terminal might look something like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">main.py</span> <span class="pre">-y</span> <span class="pre">/data/aneurysm/yourname/copies/yolo.pt</span> <span class="pre">-u</span> <span class="pre">/data/aneurysm/yourname/copies/unet.pth</span> <span class="pre">-d</span> <span class="pre">/data/aneurysm/yourname/run1</span> <span class="pre">-s</span> <span class="pre">/data/aneurysm/yourname/copies/TCGA-17-Z011</span></code></p>
 </section>
 </section>
-<section id="other-preparations">
-<h2>Other preparations<a class="headerlink" href="#other-preparations" title="Permalink to this headline">#</a></h2>
-<p>Besides editing the paths, you also need to create a directory in the
-same directory your <code class="docutils literal notranslate"><span class="pre">main.py</span></code> is placed, called temp.</p>
-<p>This is easy, just <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">temp</span></code>.</p>
-<p>After you’ve created temp the first time, you don’t need to create it
-again.</p>
-<p>Once you’ve done all this, you can just <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">main.py</span></code>.</p>
 </section>
-<section id="i-ran-main-now-what">
-<h2>I ran main… now what?<a class="headerlink" href="#i-ran-main-now-what" title="Permalink to this headline">#</a></h2>
-<p>The most important thing produced by <code class="docutils literal notranslate"><span class="pre">main.py</span></code> is the 3D Model, which
-should be located in wherever you set MODEL3D_DIR to be. The 3D model
-is an html file that you can open up in your browser and interact with.</p>
-</section>
+<section class="tex2jax_ignore mathjax_ignore" id="after-running-main-py">
+<h1>After running <a class="reference external" href="http://main.py">main.py</a><a class="headerlink" href="#after-running-main-py" title="Permalink to this headline">#</a></h1>
+<p>At the end, you will find the following in whatever output directory you specified with <code class="docutils literal notranslate"><span class="pre">-d</span></code> :</p>
+<ol class="simple">
+<li><p>A directory named crops, containing cropped images of the detected aortas</p></li>
+<li><p>A directory named masks, containing black-and-white masks of the cropped aortas</p></li>
+<li><p>A directory named fullmasks, containing the aorta masks pasted back on top of the original image</p></li>
+<li><p>A directory named patients, containing a single .html file of the 3d model of the aorta</p></li>
+<li><p>A directory named dcms, containing dicom images that have their pixel data replaced with black-and-white masks</p></li>
+</ol>
 </section>
 
     <script type="text/x-thebe-config">
@@ -497,11 +471,11 @@ is an html file that you can open up in your browser and interact with.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="yolo.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="unet.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">YOLOv5</p>
+            <p class="prev-next-title">What is U-Net?</p>
         </div>
     </a>
 </div>

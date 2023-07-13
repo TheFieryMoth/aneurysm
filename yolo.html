@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>YOLOv5 &#8212; Rowan Aneurysm Project</title>
+    <title>What is YOLO? &#8212; Rowan Aneurysm Project</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="How to run main" href="main.html" />
-    <link rel="prev" title="Introduction to the Terminal" href="terminal.html" />
+    <link rel="next" title="What is U-Net?" href="unet.html" />
+    <link rel="prev" title="Setting up your new workspace" href="setup.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -119,14 +119,24 @@ const thebe_selector_output = ".output, .cell_output"
    Introduction to the Terminal
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="setup.html">
+   Setting up your new workspace
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   YOLOv5
+   What is YOLO?
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="unet.html">
+   What is U-Net?
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="main.html">
-   How to run main
+   What is inference?
   </a>
  </li>
 </ul>
@@ -307,21 +317,14 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-format">
-   Data Format
+  <a class="reference internal nav-link" href="#converting-from-coco-json-to-yolo">
+   Converting from COCO JSON to YOLO
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#converting-from-coco-json-to-yolo">
-     Converting from COCO JSON to YOLO
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#training-and-testing">
-     Training and Testing
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training-and-testing">
+   Training and Testing
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#training">
@@ -364,7 +367,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>YOLOv5</h1>
+                <h1>What is YOLO?</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -375,21 +378,14 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-format">
-   Data Format
+  <a class="reference internal nav-link" href="#converting-from-coco-json-to-yolo">
+   Converting from COCO JSON to YOLO
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#converting-from-coco-json-to-yolo">
-     Converting from COCO JSON to YOLO
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#training-and-testing">
-     Training and Testing
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#training-and-testing">
+   Training and Testing
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#training">
@@ -433,56 +429,28 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="yolov5">
-<h1>YOLOv5<a class="headerlink" href="#yolov5" title="Permalink to this headline">#</a></h1>
-<p>Our model runs object detection as an ensemble of two models: FasterRCNN and YOLOv5. FasterRCNN is
-covered in <a class="reference external" href="https://chautrn.github.io/aneurysm-docs/faster-rcnn.html">Chau’s tutorial</a>. YOLOv5 will
-be covered here.</p>
-<p>YOLOv5 is actually an independent Git repo, hosted on the <a class="reference external" href="https://github.com/ultralytics/yolov5">Ultralytics Github</a>.
-Our version of the repo is located at:
-<code class="docutils literal notranslate"><span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProjectTraining/yolov5</span></code></p>
-<p>Our version may be outdated compared to Ultralytics’ version, but the ensemble uses
-a customized version of the detection script, so updating might break it.</p>
-<section id="data-format">
-<h2>Data Format<a class="headerlink" href="#data-format" title="Permalink to this headline">#</a></h2>
-<p>The format of a YOLO dataset is quite different from FasterRCNN. You still have
-a folder with images, but instead of a single annotation file, YOLO demands a
-separate .txt file that corresponds to each image.</p>
-<p>Furthermore, YOLO also requires a dataset.yaml file that will specify the paths
-to your training dataset and validation dataset.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="what-is-yolo">
+<h1>What is YOLO?<a class="headerlink" href="#what-is-yolo" title="Permalink to this headline">#</a></h1>
+<p>YOLO stands for You Only Look Once. You can find an explanation of it on Google, or you could read the original paper at <a class="reference external" href="https://arxiv.org/abs/1506.02640">https://arxiv.org/abs/1506.02640</a>.</p>
+<p>When this project started, YOLOv5 was the most up-to-date version. By now, ultralytics has upgraded to YOLOv8 at <a class="reference external" href="https://github.com/ultralytics/ultralytics">https://github.com/ultralytics/ultralytics</a>.</p>
+<p>Part of your work in this project will likely involve overhauling the training scripts to use YOLOv8. However, this tutorial will focus on the usage of YOLOv5.</p>
 <section id="converting-from-coco-json-to-yolo">
-<h3>Converting from COCO JSON to YOLO<a class="headerlink" href="#converting-from-coco-json-to-yolo" title="Permalink to this headline">#</a></h3>
-<p>The annotations we receive from Ron are in the COCO JSON format required for
-FasterRCNN. We can’t directly use these for YOLO, so we need to convert them.</p>
+<h2>Converting from COCO JSON to YOLO<a class="headerlink" href="#converting-from-coco-json-to-yolo" title="Permalink to this headline">#</a></h2>
+<p>The annotation scripts output annotations in COCO JSON format. We cannot use these directly for YOLO, so we need to first convert them.</p>
 <p>We already have a script for this, using a package called <a class="reference external" href="https://github.com/pylabel-project/pylabel">pylabel</a>.
-The script is straightforward - all you need to change is the annotation path
-(where is the json file located) and the output path (where you want to put your data
-after converting it). <em>NOTE: The output path must be an absolute path.</em></p>
-<p>The script is located at:
-<code class="docutils literal notranslate"><span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProjectTraining/yolov5/coco2yolo.py</span></code></p>
+The script is straightforward - all you need to change is the annotation path (where is the json file located) and the output path (where you want to put your dataafter converting it). In the end, you’ll be left with a dataset.yaml file in the directory you’ve specified.</p>
+<p>The script is located at :</p>
+<p><code class="docutils literal notranslate"><span class="pre">TutorialTest/training/scripts/coco2yolo.py</span></code></p>
 </section>
 <section id="training-and-testing">
-<h3>Training and Testing<a class="headerlink" href="#training-and-testing" title="Permalink to this headline">#</a></h3>
-<p>You shouldn’t be training on the entire dataset since you’ll get biased results
-if you test on data that you already trained on.</p>
-<p>The ratio of training data to untouched testing data is called the train-test split.
-Our FasterRCNN uses a train-test split of 80-20, meaning that 80% of the data is
-used for training and we test on the remaining 20%.</p>
-<p>In order to achieve similar results with YOLO, we have to actually move images
-(and their corresponding labels) out of the <em>train</em> directory and into a new <em>test</em>
-directory.</p>
-<p>If you don’t have the repository in your own directory, you should copy it.
-<code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">-r</span> <span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProjectTraining/yolov5</span> <span class="pre">.</span></code></p>
-<p>For this tutorial, we will be training on the merged dataset.
-This dataset is located at <code class="docutils literal notranslate"><span class="pre">/data/aneurysm/models/datasets/merged/yolo</span></code>.</p>
-</section>
+<h2>Training and Testing<a class="headerlink" href="#training-and-testing" title="Permalink to this headline">#</a></h2>
+<p>You shouldn’t be training on the entire dataset since you’ll get biased results if you test on data that you already trained on.</p>
+<p>The ratio of training data to untouched testing data is called the train-test split. The split used in our scripts is 80-20. The script used for training multiple folds is at TutorialTest/training/yolov5/train_folds.py, but all it really does is split up the data before calling the regular train script.</p>
+<p>Thus, this tutorial will focus on the <a class="reference external" href="http://train.py">train.py</a> script.</p>
 </section>
 <section id="training">
 <h2>Training<a class="headerlink" href="#training" title="Permalink to this headline">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">cd</span></code> into your version of the yolo repo. You might want to copy the dataset.yaml file
-from the dataset to here, just for convenience’s sake. This can be done with this
-command:
-<code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">/data/aneurysm/models/datasets/merged/yolo/dataset.yaml</span> <span class="pre">.</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">cd</span></code> into your version of the yolo repo. You might want to copy the dataset.yaml file over for convenience - <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">/data/aneurysm/models/datasets/merged/yolo/dataset.yaml</span></code></p>
 <p>From here, you can execute the training script. Be warned - it has a few command line arguments.</p>
 <p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">train.py</span> <span class="pre">--data</span> <span class="pre">dataset.yaml</span> <span class="pre">--weights</span> <span class="pre">''</span> <span class="pre">--cfg</span> <span class="pre">yolov5s.yaml</span> <span class="pre">--img</span> <span class="pre">512</span> <span class="pre">--epochs</span> <span class="pre">450</span></code></p>
 <p>Let’s break this down.</p>
@@ -563,9 +531,8 @@ what we want to see be as high as possible.</p>
 <p>Remember how I had you use the <code class="docutils literal notranslate"><span class="pre">--save-txt</span></code> option when testing? Yeah, that’s for
 this. As long as you have the original labels and the predicted labels, you can get the
 IoU scores of the boxes fairly easily. The script is located at:</p>
-<p><code class="docutils literal notranslate"><span class="pre">/data/aneurysm/hakimi93/CamdenAneurysmProjectInference/scripts/get_iou_scores.py</span></code></p>
-<p>Copy it over and find the variable named <code class="docutils literal notranslate"><span class="pre">preddir</span></code> (at the very bottom) and change the
-directory that leads to my labels to the directory that leads to your labels.</p>
+<p><code class="docutils literal notranslate"><span class="pre">TutorialTest/training/scripts/get_iou_scores.py</span></code></p>
+<p>Copy it over and find the variables named <code class="docutils literal notranslate"><span class="pre">truthdir</span></code> and <code class="docutils literal notranslate"><span class="pre">preddir</span></code> (at the very bottom) and change the paths so that they lead to your original labels and your predicted labels, respectively.</p>
 <p>Then, run the script and you will get the average IoU score. It should be somewhere at or
 above 0.9 for this dataset.</p>
 </section>
@@ -599,17 +566,17 @@ above 0.9 for this dataset.</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="terminal.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="setup.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction to the Terminal</p>
+            <p class="prev-next-title">Setting up your new workspace</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="main.html" title="next page">
+    <a class='right-next' id="next-link" href="unet.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">How to run main</p>
+        <p class="prev-next-title">What is U-Net?</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

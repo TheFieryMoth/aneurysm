@@ -1,63 +1,33 @@
-# YOLOv5
+# What is YOLO?
 
-Our model runs object detection as an ensemble of two models: FasterRCNN and YOLOv5. FasterRCNN is 
-covered in [Chau's tutorial](https://chautrn.github.io/aneurysm-docs/faster-rcnn.html). YOLOv5 will
-be covered here.
+YOLO stands for You Only Look Once. You can find an explanation of it on Google, or you could read the original paper at https://arxiv.org/abs/1506.02640.
 
-YOLOv5 is actually an independent Git repo, hosted on the [Ultralytics Github](https://github.com/ultralytics/yolov5).
-Our version of the repo is located at:
-`/data/aneurysm/hakimi93/CamdenAneurysmProjectTraining/yolov5`
+When this project started, YOLOv5 was the most up-to-date version. By now, ultralytics has upgraded to YOLOv8 at https://github.com/ultralytics/ultralytics. 
 
-Our version may be outdated compared to Ultralytics' version, but the ensemble uses
-a customized version of the detection script, so updating might break it.
-
-## Data Format
-
-The format of a YOLO dataset is quite different from FasterRCNN. You still have
-a folder with images, but instead of a single annotation file, YOLO demands a
-separate .txt file that corresponds to each image.
-
-Furthermore, YOLO also requires a dataset.yaml file that will specify the paths
-to your training dataset and validation dataset.
+Part of your work in this project will likely involve overhauling the training scripts to use YOLOv8. However, this tutorial will focus on the usage of YOLOv5.
 
 ### Converting from COCO JSON to YOLO
 
-The annotations we receive from Ron are in the COCO JSON format required for
-FasterRCNN. We can't directly use these for YOLO, so we need to convert them.
+The annotation scripts output annotations in COCO JSON format. We cannot use these directly for YOLO, so we need to first convert them.
 
 We already have a script for this, using a package called [pylabel](https://github.com/pylabel-project/pylabel).
-The script is straightforward - all you need to change is the annotation path 
-(where is the json file located) and the output path (where you want to put your data
-after converting it). *NOTE: The output path must be an absolute path.*
+The script is straightforward - all you need to change is the annotation path (where is the json file located) and the output path (where you want to put your dataafter converting it). In the end, you'll be left with a dataset.yaml file in the directory you've specified.
 
-The script is located at:
-`/data/aneurysm/hakimi93/CamdenAneurysmProjectTraining/yolov5/coco2yolo.py`
+The script is located at :
+
+`TutorialTest/training/scripts/coco2yolo.py`
 
 ### Training and Testing
 
-You shouldn't be training on the entire dataset since you'll get biased results
-if you test on data that you already trained on.
+You shouldn't be training on the entire dataset since you'll get biased results if you test on data that you already trained on.
 
-The ratio of training data to untouched testing data is called the train-test split.
-Our FasterRCNN uses a train-test split of 80-20, meaning that 80% of the data is
-used for training and we test on the remaining 20%.
+The ratio of training data to untouched testing data is called the train-test split. The split used in our scripts is 80-20. The script used for training multiple folds is at TutorialTest/training/yolov5/train_folds.py, but all it really does is split up the data before calling the regular train script.
 
-In order to achieve similar results with YOLO, we have to actually move images
-(and their corresponding labels) out of the *train* directory and into a new *test* 
-directory.
-
-If you don't have the repository in your own directory, you should copy it.
-`cp -r /data/aneurysm/hakimi93/CamdenAneurysmProjectTraining/yolov5 .`
-
-For this tutorial, we will be training on the merged dataset.
-This dataset is located at `/data/aneurysm/models/datasets/merged/yolo`.
+Thus, this tutorial will focus on the train.py script.
 
 ## Training
 
-`cd` into your version of the yolo repo. You might want to copy the dataset.yaml file
-from the dataset to here, just for convenience's sake. This can be done with this
-command:
-`cp /data/aneurysm/models/datasets/merged/yolo/dataset.yaml .`
+`cd` into your version of the yolo repo. You might want to copy the dataset.yaml file over for convenience - `cp /data/aneurysm/models/datasets/merged/yolo/dataset.yaml`
 
 From here, you can execute the training script. Be warned - it has a few command line arguments.
 
@@ -171,11 +141,9 @@ Remember how I had you use the `--save-txt` option when testing? Yeah, that's fo
 this. As long as you have the original labels and the predicted labels, you can get the
 IoU scores of the boxes fairly easily. The script is located at:
 
-`/data/aneurysm/hakimi93/CamdenAneurysmProjectInference/scripts/get_iou_scores.py`
+`TutorialTest/training/scripts/get_iou_scores.py`
 
-Copy it over and find the variable named `preddir` (at the very bottom) and change the
-directory that leads to my labels to the directory that leads to your labels.
+Copy it over and find the variables named `truthdir` and `preddir` (at the very bottom) and change the paths so that they lead to your original labels and your predicted labels, respectively.
 
 Then, run the script and you will get the average IoU score. It should be somewhere at or 
 above 0.9 for this dataset.
-
