@@ -29,11 +29,11 @@ Thus, this tutorial will focus on the train.py script.
 
 ## Training
 
-`cd` into your version of the yolo repo. You might want to copy the dataset.yaml file over for convenience - `cp /data/aneurysm/models/datasets/merged/yolo/dataset.yaml`
+`cd` into your version of the yolo repo. You might want to copy the dataset.yaml file over for convenience - `$ cp /data/aneurysm/models/datasets/merged/yolo/dataset.yaml .`
 
 From here, you can execute the training script. Be warned - it has a few command line arguments.
 
-`python train.py --data dataset.yaml --weights '' --cfg yolov5s.yaml --img 512 --epochs 450`
+`$ python train.py --data dataset.yaml --weights '' --cfg yolov5s.yaml --img 512 --epochs 450`
 
 Let's break this down.
 
@@ -51,6 +51,8 @@ There are a couple other options you might use.
 `--name` is used if you want to give your run a specific name.
 
 Further usage can be found [here](https://github.com/ultralytics/yolov5/blob/master/train.py#L453).
+
+It should be noted that the training script will take quite a while to run. It might be a good idea to run it in the background.
 
 ## Testing
 

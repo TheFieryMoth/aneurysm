@@ -134,3 +134,36 @@ This will download the requested package onto your Python environment.
 
 **Note: Some sites might tell you to install a package with pip. On Lambda, *you MUST use pip3*!**
 
+## Running things in the background - `&` and `disown`
+
+Training AI models is expensive. The lambda server provided by the school has GPUs for you to use, but when working with datasets of hundreds or thousands of images, training can take hours. Thus, it's often good to run programs in the background so you don't have to stay connected to the lambda server all the time.
+
+Running a command in the background is very simple - just type `&` after the command.
+
+`somecommand &`
+
+However, our training scripts generally dump tons of output to the terminal, making it difficult to do anything else on lambda. You can remedy this by flushing the output to a file, say `errors.txt` - `somecommand >errors.txt 2>&1 &`
+
+Why errors.txt? Because sometimes, your training script might run into foreseen errors if you tried to change anything, or if your data is messed up. That's why it's important to save your output *somewhere*, so you can see what went wrong. After your script stops running, you can `cat errors.txt | tail -10` to check real quick if there were any errors.
+
+Now, when you run a program in the background and then exit lambda, it terminates. In order to prevent that, we use the `disown` command:
+
+`disown -h <id>`
+
+where <id> is the program's job id. You can find the job id with `ps` under the PID column, but when you first start up a script in the background, it prints the job id to terminal for you. After running `somecommand`, you might see something like this:
+
+`[1] 27722`
+
+in which case "27722" is the job id. So you would just type
+
+`disown -h 27722`
+
+and it makes the program run entirely in the background, even if you exit lambda. The whole process takes two commands:
+
+1. `somecommand >errors.txt 2>&1 &`
+    (The terminal will print out a job id; let's say it says `[1] 27722`)
+2. `disown -h 27722`
+
+And after that, you can exit lambda without worrying about you program not running. Warning: It may still exit early due to errors.
+
+

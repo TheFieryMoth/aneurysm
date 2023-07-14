@@ -467,9 +467,9 @@ The script is straightforward - all you need to change is the annotation path (w
 </section>
 <section id="training">
 <h2>Training<a class="headerlink" href="#training" title="Permalink to this headline">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">cd</span></code> into your version of the yolo repo. You might want to copy the dataset.yaml file over for convenience - <code class="docutils literal notranslate"><span class="pre">cp</span> <span class="pre">/data/aneurysm/models/datasets/merged/yolo/dataset.yaml</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">cd</span></code> into your version of the yolo repo. You might want to copy the dataset.yaml file over for convenience - <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">cp</span> <span class="pre">/data/aneurysm/models/datasets/merged/yolo/dataset.yaml</span> <span class="pre">.</span></code></p>
 <p>From here, you can execute the training script. Be warned - it has a few command line arguments.</p>
-<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">train.py</span> <span class="pre">--data</span> <span class="pre">dataset.yaml</span> <span class="pre">--weights</span> <span class="pre">''</span> <span class="pre">--cfg</span> <span class="pre">yolov5s.yaml</span> <span class="pre">--img</span> <span class="pre">512</span> <span class="pre">--epochs</span> <span class="pre">450</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">train.py</span> <span class="pre">--data</span> <span class="pre">dataset.yaml</span> <span class="pre">--weights</span> <span class="pre">''</span> <span class="pre">--cfg</span> <span class="pre">yolov5s.yaml</span> <span class="pre">--img</span> <span class="pre">512</span> <span class="pre">--epochs</span> <span class="pre">450</span></code></p>
 <p>Let’s break this down.</p>
 <p><code class="docutils literal notranslate"><span class="pre">--data</span> <span class="pre">dataset.yaml</span></code> - Train on images in the directory defined in the dataset.yaml file.</p>
 <p><code class="docutils literal notranslate"><span class="pre">--weights</span> <span class="pre">''</span> <span class="pre">--cfg</span> <span class="pre">yolov5s.yaml</span></code> - Tells the script that you want to train from scratch.</p>
@@ -479,6 +479,7 @@ The script is straightforward - all you need to change is the annotation path (w
 <p><code class="docutils literal notranslate"><span class="pre">--project</span></code> is used when you want to save to a specific directory, and
 <code class="docutils literal notranslate"><span class="pre">--name</span></code> is used if you want to give your run a specific name.</p>
 <p>Further usage can be found <a class="reference external" href="https://github.com/ultralytics/yolov5/blob/master/train.py#L453">here</a>.</p>
+<p>It should be noted that the training script will take quite a while to run. It might be a good idea to run it in the background.</p>
 </section>
 <section id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">#</a></h2>

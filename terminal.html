@@ -126,17 +126,17 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="yolo.html">
-   What is YOLO?
+   YOLO
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="unet.html">
-   What is U-Net?
+   U-Net
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="main.html">
-   What is inference?
+   Main, aka our inference script
   </a>
  </li>
 </ul>
@@ -411,6 +411,22 @@ title="Print to PDF"
    command
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-things-in-the-background-and-disown">
+   Running things in the background -
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     &amp;
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     disown
+    </span>
+   </code>
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -523,6 +539,22 @@ title="Print to PDF"
     </span>
    </code>
    command
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-things-in-the-background-and-disown">
+   Running things in the background -
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     &amp;
+    </span>
+   </code>
+   and
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     disown
+    </span>
+   </code>
   </a>
  </li>
 </ul>
@@ -647,6 +679,27 @@ with the <code class="docutils literal notranslate"><span class="pre">pip3</span
 <p><code class="docutils literal notranslate"><span class="pre">pip3</span> <span class="pre">install</span> <span class="pre">xyz</span></code></p>
 <p>This will download the requested package onto your Python environment.</p>
 <p><strong>Note: Some sites might tell you to install a package with pip. On Lambda, <em>you MUST use pip3</em>!</strong></p>
+</section>
+<section id="running-things-in-the-background-and-disown">
+<h2>Running things in the background - <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">disown</span></code><a class="headerlink" href="#running-things-in-the-background-and-disown" title="Permalink to this headline">#</a></h2>
+<p>Training AI models is expensive. The lambda server provided by the school has GPUs for you to use, but when working with datasets of hundreds or thousands of images, training can take hours. Thus, it’s often good to run programs in the background so you don’t have to stay connected to the lambda server all the time.</p>
+<p>Running a command in the background is very simple - just type <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> after the command.</p>
+<p><code class="docutils literal notranslate"><span class="pre">somecommand</span> <span class="pre">&amp;</span></code></p>
+<p>However, our training scripts generally dump tons of output to the terminal, making it difficult to do anything else on lambda. You can remedy this by flushing the output to a file, say <code class="docutils literal notranslate"><span class="pre">errors.txt</span></code> - <code class="docutils literal notranslate"><span class="pre">somecommand</span> <span class="pre">&gt;errors.txt</span> <span class="pre">2&gt;&amp;1</span> <span class="pre">&amp;</span></code></p>
+<p>Why errors.txt? Because sometimes, your training script might run into foreseen errors if you tried to change anything, or if your data is messed up. That’s why it’s important to save your output <em>somewhere</em>, so you can see what went wrong. After your script stops running, you can <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">errors.txt</span> <span class="pre">|</span> <span class="pre">tail</span> <span class="pre">-10</span></code> to check real quick if there were any errors.</p>
+<p>Now, when you run a program in the background and then exit lambda, it terminates. In order to prevent that, we use the <code class="docutils literal notranslate"><span class="pre">disown</span></code> command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">disown</span> <span class="pre">-h</span> <span class="pre">&lt;id&gt;</span></code></p>
+<p>where <id> is the program’s job id. You can find the job id with <code class="docutils literal notranslate"><span class="pre">ps</span></code> under the PID column, but when you first start up a script in the background, it prints the job id to terminal for you. After running <code class="docutils literal notranslate"><span class="pre">somecommand</span></code>, you might see something like this:</p>
+<p><code class="docutils literal notranslate"><span class="pre">[1]</span> <span class="pre">27722</span></code></p>
+<p>in which case “27722” is the job id. So you would just type</p>
+<p><code class="docutils literal notranslate"><span class="pre">disown</span> <span class="pre">-h</span> <span class="pre">27722</span></code></p>
+<p>and it makes the program run entirely in the background, even if you exit lambda. The whole process takes two commands:</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">somecommand</span> <span class="pre">&gt;errors.txt</span> <span class="pre">2&gt;&amp;1</span> <span class="pre">&amp;</span></code>
+(The terminal will print out a job id; let’s say it says <code class="docutils literal notranslate"><span class="pre">[1]</span> <span class="pre">27722</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">disown</span> <span class="pre">-h</span> <span class="pre">27722</span></code></p></li>
+</ol>
+<p>And after that, you can exit lambda without worrying about you program not running. Warning: It may still exit early due to errors.</p>
 </section>
 </section>
 

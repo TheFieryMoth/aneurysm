@@ -23,4 +23,4 @@
 	This virtual environment contains all the necessary libraries to run our 2D scripts. Once you are done, 
 	you will want to exit the virtual environment with `$ deactivate`.
 
-4. Move on to the next tutorial.	
+4. Enter the training directory - `$ cd training` - and move on to the next tutorial.	
