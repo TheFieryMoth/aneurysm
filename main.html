@@ -329,13 +329,6 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#main-py-command-line-arguments">
    main.py command-line arguments
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#important-note-to-prevent-accidental-corruption-of-any-files-it-s-a-good-idea-to-copy-all-the-files-and-directories-you-will-use-into-a-separate-copies-directory-beforehand-the-paths-you-specify-in-these-command-line-arguments-should-not-be-direct-links-to-data-aneurysm-models-datasets-or-data-aneurysm-models-weights">
-     Important note: To prevent accidental corruption of any files, it’s a good idea to copy all the files and directories you will use into a separate copies directory beforehand. The paths you specify in these command line arguments SHOULD NOT be direct links to /data/aneurysm/models/datasets or /data/aneurysm/models/weights.
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#after-running-main-py">
@@ -375,13 +368,6 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#main-py-command-line-arguments">
    main.py command-line arguments
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#important-note-to-prevent-accidental-corruption-of-any-files-it-s-a-good-idea-to-copy-all-the-files-and-directories-you-will-use-into-a-separate-copies-directory-beforehand-the-paths-you-specify-in-these-command-line-arguments-should-not-be-direct-links-to-data-aneurysm-models-datasets-or-data-aneurysm-models-weights">
-     Important note: To prevent accidental corruption of any files, it’s a good idea to copy all the files and directories you will use into a separate copies directory beforehand. The paths you specify in these command line arguments SHOULD NOT be direct links to /data/aneurysm/models/datasets or /data/aneurysm/models/weights.
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#after-running-main-py">
@@ -424,11 +410,12 @@ specify the arguments when you run it. So you would do something like this:</p>
 <p>This argument specifies the path to the directory that contains the source images. This directory should contain .dcm files.</p>
 <p>-f (–faster) :</p>
 <p>This argument is obsolete, a holdover from when we were using an ensemble. It doesn’t need to be specified and can probably be removed without any problems.</p>
-<section id="important-note-to-prevent-accidental-corruption-of-any-files-it-s-a-good-idea-to-copy-all-the-files-and-directories-you-will-use-into-a-separate-copies-directory-beforehand-the-paths-you-specify-in-these-command-line-arguments-should-not-be-direct-links-to-data-aneurysm-models-datasets-or-data-aneurysm-models-weights">
-<h3>Important note: To prevent accidental corruption of any files, it’s a good idea to copy all the files and directories you will use into a separate copies directory beforehand. The paths you specify in these command line arguments SHOULD NOT be direct links to /data/aneurysm/models/datasets or /data/aneurysm/models/weights.<a class="headerlink" href="#important-note-to-prevent-accidental-corruption-of-any-files-it-s-a-good-idea-to-copy-all-the-files-and-directories-you-will-use-into-a-separate-copies-directory-beforehand-the-paths-you-specify-in-these-command-line-arguments-should-not-be-direct-links-to-data-aneurysm-models-datasets-or-data-aneurysm-models-weights" title="Permalink to this headline">#</a></h3>
+<blockquote>
+<div><p>To prevent accidental corruption of any files, it’s a good idea to copy all the files and directories you will use into a separate copies directory beforehand, especially if you changed anything in the code relating to saving. The paths you specify in these command line arguments should not be direct links to /data/aneurysm/models/datasets or /data/aneurysm/models/weights.</p>
+</div></blockquote>
 <p>The final line you run in the terminal might look something like this:</p>
-<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">main.py</span> <span class="pre">-y</span> <span class="pre">/data/aneurysm/yourname/copies/yolo.pt</span> <span class="pre">-u</span> <span class="pre">/data/aneurysm/yourname/copies/unet.pth</span> <span class="pre">-d</span> <span class="pre">/data/aneurysm/yourname/run1</span> <span class="pre">-s</span> <span class="pre">/data/aneurysm/yourname/copies/TCGA-17-Z011</span></code></p>
-</section>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">main.py</span> <span class="pre">-y</span> <span class="pre">/data/aneurysm/yourname/TutorialTest/copies/yolo.pt</span> <span class="pre">-u</span> <span class="pre">/data/aneurysm/yourname/TutorialTest/copies/unet.pth</span> <span class="pre">-d</span> <span class="pre">/data/aneurysm/yourname/TutorialTest/run1</span> <span class="pre">-s</span> <span class="pre">/data/aneurysm/yourname/TutorialTest/copies/TCGA-17-Z011</span></code></p>
+<p>Of course, the exact filenames will differ depending on what your final weight files ended up being named.</p>
 </section>
 <section id="after-running-main-py">
 <h2>After running <a class="reference external" href="http://main.py">main.py</a><a class="headerlink" href="#after-running-main-py" title="Permalink to this headline">#</a></h2>

@@ -389,12 +389,13 @@ title="Print to PDF"
 <p>train_anno: The json file that contains the annotations</p>
 <p>dir_checkpoint: The location you want your weights to be saved to. Must exist BEFORE running the script</p>
 <p>crops_root: The directory containing the original crops of the aortas</p>
-<p>output_root: The location you want your final image outputs to be saved to</p>
+<p>output_root: The location you want your final image outputs to be saved to. Must exist BEFORE running the script</p>
+<p><code class="docutils literal notranslate"><span class="pre">train_path</span></code>, <code class="docutils literal notranslate"><span class="pre">train_anno</span></code>, and <code class="docutils literal notranslate"><span class="pre">crops_root</span></code> will need to be changed depending on what set of data you’re training on.</p>
 </section>
 <section id="metrics">
 <h2>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">#</a></h2>
 <p>The training script automatically performs testing for you and stores the images in whichever directory you set.</p>
-<p>In order to calculate the accuracy of image segmentation, a metric called Jaccard score is used. The script to get that is in TutorialTest/training/scripts/get_jaccard_scores.py</p>
+<p>In order to calculate the accuracy of image segmentation, a metric called Jaccard score is used. The script to get that is in <code class="docutils literal notranslate"><span class="pre">TutorialTest/training/scripts/get_jaccard_scores.py</span></code>. You just need to change the paths of <code class="docutils literal notranslate"><span class="pre">truthdir</span></code> and <code class="docutils literal notranslate"><span class="pre">preddir</span></code> at the very bottom.</p>
 </section>
 </section>
 

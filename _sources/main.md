@@ -36,11 +36,13 @@ This argument specifies the path to the directory that contains the source image
 
 This argument is obsolete, a holdover from when we were using an ensemble. It doesn't need to be specified and can probably be removed without any problems.
 
-### Important note: To prevent accidental corruption of any files, it's a good idea to copy all the files and directories you will use into a separate copies directory beforehand. The paths you specify in these command line arguments SHOULD NOT be direct links to /data/aneurysm/models/datasets or /data/aneurysm/models/weights.
+> To prevent accidental corruption of any files, it's a good idea to copy all the files and directories you will use into a separate copies directory beforehand, especially if you changed anything in the code relating to saving. The paths you specify in these command line arguments should not be direct links to /data/aneurysm/models/datasets or /data/aneurysm/models/weights.
 
 The final line you run in the terminal might look something like this:
 
-`python main.py -y /data/aneurysm/yourname/copies/yolo.pt -u /data/aneurysm/yourname/copies/unet.pth -d /data/aneurysm/yourname/run1 -s /data/aneurysm/yourname/copies/TCGA-17-Z011`
+`python main.py -y /data/aneurysm/yourname/TutorialTest/copies/yolo.pt -u /data/aneurysm/yourname/TutorialTest/copies/unet.pth -d /data/aneurysm/yourname/TutorialTest/run1 -s /data/aneurysm/yourname/TutorialTest/copies/TCGA-17-Z011`
+
+Of course, the exact filenames will differ depending on what your final weight files ended up being named.
 
 ## After running main.py
 

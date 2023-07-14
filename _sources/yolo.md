@@ -149,5 +149,4 @@ IoU scores of the boxes fairly easily. The script is located at:
 
 Copy it over and find the variables named `truthdir` and `preddir` (at the very bottom) and change the paths so that they lead to your original labels and your predicted labels, respectively.
 
-Then, run the script and you will get the average IoU score. It should be somewhere at or 
-above 0.9 for this dataset.
+Then, run the script and you will get the average IoU score. It should be somewhere around 0.9 for this dataset.
