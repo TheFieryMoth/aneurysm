@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>What is inference? &#8212; Rowan Aneurysm Project</title>
+    <title>Main, aka our inference script &#8212; Rowan Aneurysm Project</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="What is U-Net?" href="unet.html" />
+    <link rel="prev" title="U-Net" href="unet.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -125,17 +125,17 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="yolo.html">
-   What is YOLO?
+   YOLO
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="unet.html">
-   What is U-Net?
+   U-Net
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   What is inference?
+   Main, aka our inference script
   </a>
  </li>
 </ul>
@@ -315,31 +315,29 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-inference">
    What is inference?
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#running-main-py">
    Running main.py
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#main-py-command-line-arguments">
-     main.py command-line arguments
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#main-py-command-line-arguments">
+   main.py command-line arguments
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#important-note-to-prevent-accidental-corruption-of-any-files-it-s-a-good-idea-to-copy-all-the-files-and-directories-you-will-use-into-a-separate-copies-directory-beforehand-the-paths-you-specify-in-these-command-line-arguments-should-not-be-direct-links-to-data-aneurysm-models-datasets-or-data-aneurysm-models-weights">
+     Important note: To prevent accidental corruption of any files, it’s a good idea to copy all the files and directories you will use into a separate copies directory beforehand. The paths you specify in these command line arguments SHOULD NOT be direct links to /data/aneurysm/models/datasets or /data/aneurysm/models/weights.
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#important-note-to-prevent-accidental-corruption-of-any-files-it-s-a-good-idea-to-copy-all-the-files-and-directories-you-will-use-into-a-separate-copies-directory-beforehand-the-paths-you-specify-in-these-command-line-arguments-should-not-be-direct-links-to-data-aneurysm-models-datasets-or-data-aneurysm-models-weights">
-       Important note: To prevent accidental corruption of any files, it’s a good idea to copy all the files and directories you will use into a separate copies directory beforehand. The paths you specify in these command line arguments SHOULD NOT be direct links to /data/aneurysm/models/datasets or /data/aneurysm/models/weights.
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#after-running-main-py">
    After running main.py
   </a>
@@ -353,7 +351,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>What is inference?</h1>
+                <h1>Main, aka our inference script</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -363,31 +361,29 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-inference">
    What is inference?
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#running-main-py">
    Running main.py
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#main-py-command-line-arguments">
-     main.py command-line arguments
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#main-py-command-line-arguments">
+   main.py command-line arguments
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#important-note-to-prevent-accidental-corruption-of-any-files-it-s-a-good-idea-to-copy-all-the-files-and-directories-you-will-use-into-a-separate-copies-directory-beforehand-the-paths-you-specify-in-these-command-line-arguments-should-not-be-direct-links-to-data-aneurysm-models-datasets-or-data-aneurysm-models-weights">
+     Important note: To prevent accidental corruption of any files, it’s a good idea to copy all the files and directories you will use into a separate copies directory beforehand. The paths you specify in these command line arguments SHOULD NOT be direct links to /data/aneurysm/models/datasets or /data/aneurysm/models/weights.
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#important-note-to-prevent-accidental-corruption-of-any-files-it-s-a-good-idea-to-copy-all-the-files-and-directories-you-will-use-into-a-separate-copies-directory-beforehand-the-paths-you-specify-in-these-command-line-arguments-should-not-be-direct-links-to-data-aneurysm-models-datasets-or-data-aneurysm-models-weights">
-       Important note: To prevent accidental corruption of any files, it’s a good idea to copy all the files and directories you will use into a separate copies directory beforehand. The paths you specify in these command line arguments SHOULD NOT be direct links to /data/aneurysm/models/datasets or /data/aneurysm/models/weights.
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#after-running-main-py">
    After running main.py
   </a>
@@ -402,17 +398,20 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="what-is-inference">
-<h1>What is inference?<a class="headerlink" href="#what-is-inference" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="main-aka-our-inference-script">
+<h1>Main, aka our inference script<a class="headerlink" href="#main-aka-our-inference-script" title="Permalink to this headline">#</a></h1>
+<section id="what-is-inference">
+<h2>What is inference?<a class="headerlink" href="#what-is-inference" title="Permalink to this headline">#</a></h2>
 <p>Inference is the process of obtaining a prediction from a machine learning model. This is one half of the project,
 with the other half being training the model.</p>
 <p>The scripts for inferences are located in the <code class="docutils literal notranslate"><span class="pre">inference</span></code> folder.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="running-main-py">
-<h1>Running <a class="reference external" href="http://main.py">main.py</a><a class="headerlink" href="#running-main-py" title="Permalink to this headline">#</a></h1>
+<section id="running-main-py">
+<h2>Running <a class="reference external" href="http://main.py">main.py</a><a class="headerlink" href="#running-main-py" title="Permalink to this headline">#</a></h2>
 <p>The main script for inferencing is called <code class="docutils literal notranslate"><span class="pre">main.py</span></code>. It is run with command-line arguments, meaning you have to
 specify the arguments when you run it. So you would do something like this:</p>
 <p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">main.py</span> <span class="pre">--cmdlinearg1</span> <span class="pre">x</span> <span class="pre">--cmdlinearg2</span> <span class="pre">y</span></code></p>
+</section>
 <section id="main-py-command-line-arguments">
 <h2><a class="reference external" href="http://main.py">main.py</a> command-line arguments<a class="headerlink" href="#main-py-command-line-arguments" title="Permalink to this headline">#</a></h2>
 <p>-y (–yolo) :</p>
@@ -431,9 +430,8 @@ specify the arguments when you run it. So you would do something like this:</p>
 <p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">main.py</span> <span class="pre">-y</span> <span class="pre">/data/aneurysm/yourname/copies/yolo.pt</span> <span class="pre">-u</span> <span class="pre">/data/aneurysm/yourname/copies/unet.pth</span> <span class="pre">-d</span> <span class="pre">/data/aneurysm/yourname/run1</span> <span class="pre">-s</span> <span class="pre">/data/aneurysm/yourname/copies/TCGA-17-Z011</span></code></p>
 </section>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="after-running-main-py">
-<h1>After running <a class="reference external" href="http://main.py">main.py</a><a class="headerlink" href="#after-running-main-py" title="Permalink to this headline">#</a></h1>
+<section id="after-running-main-py">
+<h2>After running <a class="reference external" href="http://main.py">main.py</a><a class="headerlink" href="#after-running-main-py" title="Permalink to this headline">#</a></h2>
 <p>At the end, you will find the following in whatever output directory you specified with <code class="docutils literal notranslate"><span class="pre">-d</span></code> :</p>
 <ol class="simple">
 <li><p>A directory named crops, containing cropped images of the detected aortas</p></li>
@@ -442,6 +440,7 @@ specify the arguments when you run it. So you would do something like this:</p>
 <li><p>A directory named patients, containing a single .html file of the 3d model of the aorta</p></li>
 <li><p>A directory named dcms, containing dicom images that have their pixel data replaced with black-and-white masks</p></li>
 </ol>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -475,7 +474,7 @@ specify the arguments when you run it. So you would do something like this:</p>
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">What is U-Net?</p>
+            <p class="prev-next-title">U-Net</p>
         </div>
     </a>
 </div>

@@ -1,10 +1,12 @@
-# What is U-Net?
+# U-Net
+
+## What is U-Net?
 
 U-Net is an image segmentation architecture designed for biomedical purposes. The original paper can be found at https://arxiv.org/pdf/1505.04597.pdf
 
 This project uses a PyTorch implementation of U-Net. It should be located at TutorialTest/training/UNet.
 
-# Training
+## Training
 
 In order to train U-Net, all you have to do is enter the training script train.py and change some parameters :
 
@@ -18,7 +20,7 @@ crops_root: The directory containing the original crops of the aortas
 
 output_root: The location you want your final image outputs to be saved to
 
-# Metrics
+## Metrics
 
 The training script automatically performs testing for you and stores the images in whichever directory you set.
 

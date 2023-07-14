@@ -1,4 +1,6 @@
-# What is YOLO?
+# YOLO
+
+## What is YOLO?
 
 YOLO stands for You Only Look Once. You can find an explanation of it on Google, or you could read the original paper at https://arxiv.org/abs/1506.02640.
 

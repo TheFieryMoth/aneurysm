@@ -1,11 +1,13 @@
-# What is inference?
+# Main, aka our inference script
+
+## What is inference?
 
 Inference is the process of obtaining a prediction from a machine learning model. This is one half of the project, 
 with the other half being training the model.
 
 The scripts for inferences are located in the `inference` folder.
 
-# Running main.py
+## Running main.py
 
 The main script for inferencing is called `main.py`. It is run with command-line arguments, meaning you have to
 specify the arguments when you run it. So you would do something like this:
@@ -40,7 +42,7 @@ The final line you run in the terminal might look something like this:
 
 `python main.py -y /data/aneurysm/yourname/copies/yolo.pt -u /data/aneurysm/yourname/copies/unet.pth -d /data/aneurysm/yourname/run1 -s /data/aneurysm/yourname/copies/TCGA-17-Z011`
 
-# After running main.py
+## After running main.py
 
 At the end, you will find the following in whatever output directory you specified with `-d` :
 
