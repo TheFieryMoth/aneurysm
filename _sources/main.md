@@ -57,3 +57,17 @@ At the end, you will find the following in whatever output directory you specifi
 4. A directory named patients, containing a single .html file of the 3d model of the aorta
 
 5. A directory named dcms, containing dicom images that have their pixel data replaced with black-and-white masks
+
+# Non-lambda GUI
+
+Inside `TutorialTest`, there is a script named `sshgui.py` that allows you to upload files for inference to the lambda server from your own machine.
+
+On your local machine, open up a terminal (or command prompt on Windows) and type:
+
+`scp <yourname>@lambda04:/data/aneurysm/hakimi93/TutorialTest/sshgui.py .`
+
+And the gui script will appear on your local machine. You can then run it (after installing necessary libraries) with `python sshgui.py`
+
+> I personally use an Ubuntu subsystem installed on Windows. For this, I have to first `export DISPLAY=:0` before being able to show GUI windows on my screen. Pure Windows users may need to jump through different hoops.
+
+The GUI should be fairly self-explanatory - so far, there is only one server and only one set of weights. You can add and change the weights in the `getweights` function in the script.

@@ -315,24 +315,36 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-inference">
-   What is inference?
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Main, aka our inference script
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-inference">
+     What is inference?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-main-py">
+     Running main.py
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#main-py-command-line-arguments">
+     main.py command-line arguments
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#after-running-main-py">
+     After running main.py
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#running-main-py">
-   Running main.py
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#main-py-command-line-arguments">
-   main.py command-line arguments
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#after-running-main-py">
-   After running main.py
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#non-lambda-gui">
+   Non-lambda GUI
   </a>
  </li>
 </ul>
@@ -354,24 +366,36 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-inference">
-   What is inference?
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Main, aka our inference script
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-inference">
+     What is inference?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-main-py">
+     Running main.py
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#main-py-command-line-arguments">
+     main.py command-line arguments
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#after-running-main-py">
+     After running main.py
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#running-main-py">
-   Running main.py
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#main-py-command-line-arguments">
-   main.py command-line arguments
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#after-running-main-py">
-   After running main.py
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#non-lambda-gui">
+   Non-lambda GUI
   </a>
  </li>
 </ul>
@@ -428,6 +452,17 @@ specify the arguments when you run it. So you would do something like this:</p>
 <li><p>A directory named dcms, containing dicom images that have their pixel data replaced with black-and-white masks</p></li>
 </ol>
 </section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="non-lambda-gui">
+<h1>Non-lambda GUI<a class="headerlink" href="#non-lambda-gui" title="Permalink to this headline">#</a></h1>
+<p>Inside <code class="docutils literal notranslate"><span class="pre">TutorialTest</span></code>, there is a script named <code class="docutils literal notranslate"><span class="pre">sshgui.py</span></code> that allows you to upload files for inference to the lambda server from your own machine.</p>
+<p>On your local machine, open up a terminal (or command prompt on Windows) and type:</p>
+<p><code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">&lt;yourname&gt;&#64;lambda04:/data/aneurysm/hakimi93/TutorialTest/sshgui.py</span> <span class="pre">.</span></code></p>
+<p>And the gui script will appear on your local machine. You can then run it (after installing necessary libraries) with <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">sshgui.py</span></code></p>
+<blockquote>
+<div><p>I personally use an Ubuntu subsystem installed on Windows. For this, I have to first <code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">DISPLAY=:0</span></code> before being able to show GUI windows on my screen. Pure Windows users may need to jump through different hoops.</p>
+</div></blockquote>
+<p>The GUI should be fairly self-explanatory - so far, there is only one server and only one set of weights. You can add and change the weights in the <code class="docutils literal notranslate"><span class="pre">getweights</span></code> function in the script.</p>
 </section>
 
     <script type="text/x-thebe-config">
